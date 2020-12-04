@@ -17,7 +17,7 @@ return [
         'twitch' => [
             'app_token' => [
                 'token' => env('OVERLAY_TWITCH_APP_TOKEN'),
-                'regenerate' => false,
+                'regenerate' => true,
             ],
 
             /** A secret is needed to check webhook calls by twitch */

@@ -8,6 +8,13 @@
 
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+
+                <div>
+                    <link-twitch-account :user="$page.user" />
+
+                    <jet-section-border />
+                </div>
+
                 <div v-if="$page.jetstream.canUpdateProfileInformation">
                     <update-profile-information-form :user="$page.user" />
 
@@ -44,6 +51,7 @@
     import TwoFactorAuthenticationForm from './TwoFactorAuthenticationForm'
     import UpdatePasswordForm from './UpdatePasswordForm'
     import UpdateProfileInformationForm from './UpdateProfileInformationForm'
+    import LinkTwitchAccount from './LinkTwitchAccount'
 
     export default {
         props: ['sessions'],
@@ -56,6 +64,7 @@
             TwoFactorAuthenticationForm,
             UpdatePasswordForm,
             UpdateProfileInformationForm,
+            LinkTwitchAccount,
         },
     }
 </script>

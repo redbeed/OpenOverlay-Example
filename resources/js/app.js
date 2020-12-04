@@ -7,7 +7,7 @@ import Vue from 'vue';
 import { InertiaApp } from '@inertiajs/inertia-vue';
 import { InertiaForm } from 'laravel-jetstream';
 import PortalVue from 'portal-vue';
-import Echo from "laravel-echo"
+import Echo from "laravel-echo";
 
 
 Vue.mixin({ methods: { route } });
