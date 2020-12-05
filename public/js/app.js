@@ -69387,7 +69387,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************************************************************!*\
   !*** ./resources/js/Pages/Profile/LinkTwitchAccount.vue?vue&type=template&id=fe7ec0be& ***!
   \*****************************************************************************************/
-/*! no static exports found */
+/*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

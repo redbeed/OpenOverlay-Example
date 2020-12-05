@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f225d17279f578bb8c9d0d081409893f",
+    "content-hash": "8b7044453ec4aa9965dc3e3e23b46406",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4001,16 +4001,10 @@
         {
             "name": "redbeed/openoverlay",
             "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/redbeed/OpenOverlay.git",
-                "reference": "0d3e75970973861649a5365d6ade7e90b445a306"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/redbeed/OpenOverlay/zipball/0d3e75970973861649a5365d6ade7e90b445a306",
-                "reference": "0d3e75970973861649a5365d6ade7e90b445a306",
-                "shasum": ""
+                "type": "path",
+                "url": "/Volumes/Data/PROJECTS/moVRs/openOverlay/packages/Redbeed/OpenOverlay",
+                "reference": "bbfd8351c80f3bf275e1c9b182bd550d748c671d"
             },
             "require": {
                 "ext-json": "*",
@@ -4039,7 +4033,11 @@
                     "Redbeed\\OpenOverlay\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Redbeed\\OpenOverlay\\Tests\\": "tests"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -4054,11 +4052,14 @@
             "homepage": "https://github.com/redbeed/openoverlay",
             "keywords": [
                 "Eventsub",
+                "Laravel",
                 "OpenOverlay",
-                "laravel",
                 "twitch"
             ],
-            "time": "2020-12-04T15:34:36+00:00"
+            "transport-options": {
+                "symlink": false,
+                "relative": false
+            }
         },
         {
             "name": "ringcentral/psr7",

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OverlayExampleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,6 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard');
 })->name('dashboard');
+
+Route::get('overlay/{twitchUserId}')->uses(OverlayExampleController::class)
+    ->name('overlay.example');
