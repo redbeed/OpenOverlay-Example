@@ -2,18 +2,21 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\Arr;
 use Illuminate\View\Component;
 
 class LatestEvent extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct()
+
+    /** @var string */
+    private $defaultUser = 'moVRsss';
+
+    /** @var array */
+    private $recentList;
+
+    public function __construct(array $recentList = [])
     {
-        //
+        $this->recentList = $recentList;
     }
 
     /**
@@ -23,6 +26,15 @@ class LatestEvent extends Component
      */
     public function render()
     {
-        return view('components.latest-event');
+        $recentUsername = $this->defaultUser;
+        $recentFollower = Arr::first($this->recentList);
+
+        if ($recentFollower !== null) {
+            $recentUsername = $recentFollower['follower_username'];
+        }
+
+        return view('components.latest-event', [
+            'recentUsername' => $recentUsername,
+        ]);
     }
 }

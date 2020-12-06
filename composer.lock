@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b7044453ec4aa9965dc3e3e23b46406",
+    "content-hash": "1840a159a5a63e0e1456789a5a1d2874",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4000,11 +4000,17 @@
         },
         {
             "name": "redbeed/openoverlay",
-            "version": "dev-main",
+            "version": "0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/redbeed/OpenOverlay.git",
+                "reference": "0889e60d83f48b1f37c329f09be34b397d8e0200"
+            },
             "dist": {
-                "type": "path",
-                "url": "/Volumes/Data/PROJECTS/moVRs/openOverlay/packages/Redbeed/OpenOverlay",
-                "reference": "bbfd8351c80f3bf275e1c9b182bd550d748c671d"
+                "type": "zip",
+                "url": "https://api.github.com/repos/redbeed/OpenOverlay/zipball/0889e60d83f48b1f37c329f09be34b397d8e0200",
+                "reference": "0889e60d83f48b1f37c329f09be34b397d8e0200",
+                "shasum": ""
             },
             "require": {
                 "ext-json": "*",
@@ -4033,11 +4039,7 @@
                     "Redbeed\\OpenOverlay\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Redbeed\\OpenOverlay\\Tests\\": "tests"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4052,14 +4054,11 @@
             "homepage": "https://github.com/redbeed/openoverlay",
             "keywords": [
                 "Eventsub",
-                "Laravel",
                 "OpenOverlay",
+                "laravel",
                 "twitch"
             ],
-            "transport-options": {
-                "symlink": false,
-                "relative": false
-            }
+            "time": "2020-12-06T10:52:40+00:00"
         },
         {
             "name": "ringcentral/psr7",
@@ -8968,9 +8967,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "redbeed/openoverlay": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -19,7 +19,7 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "pusher/pusher-php-server": "~3.0",
-        "redbeed/openoverlay": "dev-main",
+        "redbeed/openoverlay": "^0.2.0",
         "tightenco/ziggy": "^0.9.4"
     },
     "require-dev": {
@@ -29,15 +29,6 @@
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3.3"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "/Volumes/Data/PROJECTS/moVRs/openOverlay/packages/Redbeed/OpenOverlay",
-            "options": {
-                "symlink": false
-            }
-        }
-    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",

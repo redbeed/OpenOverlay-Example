@@ -1,5 +1,5 @@
 @extends('layouts.overlay')
 
 @section('content')
-    <x-latest-event/>
+    <x-latest-event :recentList="$followers"/>
 @endsection
