@@ -11,14 +11,18 @@ class ShareInertiaData
     {
         Inertia::share(array_filter([
             'twitchUser' => function () use ($request) {
-                if (! $request->user()) {
+                if (!$request->user()) {
                     return;
                 }
 
                 $twitch = $request->user()->connections()->where('service', 'twitch')->first();
 
+                if (empty($twitch)) {
+                    return null;
+                }
+
                 return $twitch->toArray();
-            }
+            },
         ]));
 
         return $next($request);
