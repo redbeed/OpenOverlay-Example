@@ -1,4 +1,4 @@
-# OpenOverlay Example App
+# OpenOverlay Standalone App
 
 This is a template / example laravel app for the [OpenOverlay][open-overlay] package with websocket.
 You can use this to start with your overlay.
