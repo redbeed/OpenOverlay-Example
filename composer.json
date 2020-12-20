@@ -19,7 +19,7 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "pusher/pusher-php-server": "~3.0",
-        "redbeed/openoverlay": "^0.2.0",
+        "redbeed/openoverlay": "^0.3.0",
         "tightenco/ziggy": "^0.9.4"
     },
     "require-dev": {
