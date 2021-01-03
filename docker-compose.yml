@@ -1,97 +1,90 @@
+# For more information: https://laravel.com/docs/sail
 version: '3'
-
 services:
-
-  #SQL Service
-  overlay-sql:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    tty: true
-    volumes:
-    - ./docker/mysql/data:/var/lib/mysql
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-    networks:
-      - overlay-network
-
-  #Nginx Service
-  overlay-webserver:
-    image: nginx:alpine
-    volumes:
-      - ./:/var/www
-      - ./docker/webserver/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
-    ports:
-      - "8081:80"
-    depends_on:
-      - overlay-app
-      - overlay-sql
-    networks:
-      - overlay-network
-
-  #PHP Service
-  overlay-app:
-    build:
-      context: ./
-      dockerfile: docker/app/php/Dockerfile
-    image: php
-    restart: unless-stopped
-    tty: true
-    working_dir: /var/www
-    volumes:
-      - ./:/var/www
-    ports:
-      - "9001:9000"
-    depends_on:
-      - overlay-sql
-    networks:
-      - overlay-network
-
-  #PHP Webssocket
-  overlay-websocket:
-    build:
-      context: ./
-      dockerfile: docker/app/php/Dockerfile
-    image: php
-    command: [ "sh", "-c", "php artisan websockets:serve --host=0.0.0.0" ]
-    restart: unless-stopped
-    tty: true
-    working_dir: /var/www
-    volumes:
-      - ./:/var/www
-    ports:
-      - "6001:6001"
-    depends_on:
-      - overlay-sql
-      - overlay-app
-    networks:
-      - overlay-network
-
-
-  #PHP Chatbot
-  overlay-chatbot:
-    build:
-      context: ./
-      dockerfile: docker/app/php/Dockerfile
-    image: php
-    command: [ "sh", "-c", "php artisan overlay:chatbot" ]
-    restart: unless-stopped
-    tty: true
-    working_dir: /var/www
-    volumes:
-      - ./:/var/www
-    depends_on:
-      - overlay-sql
-      - overlay-app
-    networks:
-      - overlay-network
-
-
+    laravel.app:
+        build:
+            context: ./vendor/laravel/sail/runtimes/8.0
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+        image: sail-8.0/app
+        ports:
+            - '${APP_PORT:-80}:80'
+        environment:
+            WWWUSER: '${WWWUSER}'
+            LARAVEL_SAIL: 1
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - sail
+        depends_on:
+            - mysql
+            - redis
+    mysql:
+        image: 'mysql:8.0'
+        ports:
+            - '${FORWARD_DB_PORT:-3306}:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: '${DB_ROOT_PASSWORD}'
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USER: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        volumes:
+            - 'sailmysql:/var/lib/mysql'
+        networks:
+            - sail
+    redis:
+        image: 'redis:alpine'
+        ports:
+            - '${FORWARD_REDIS_PORT:-6379}:6379'
+        volumes:
+            - 'sailredis:/data'
+        networks:
+            - sail
+    laravel.websocket:
+        build:
+            context: ./vendor/laravel/sail/runtimes/8.0
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+        image: sail-8.0/app
+        command: [ "sh", "-c", "php artisan websockets:serve --host=0.0.0.0" ]
+        restart: unless-stopped
+        ports:
+            - '6001:6001'
+        environment:
+            WWWUSER: '${WWWUSER}'
+            LARAVEL_SAIL: 1
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - sail
+        depends_on:
+            - laravel.app
+    laravel.chatbot:
+        build:
+            context: ./vendor/laravel/sail/runtimes/8.0
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+        image: sail-8.0/app
+        command: [ "sh", "-c", "php artisan overlay:chatbot" ]
+        restart: unless-stopped
+        environment:
+            WWWUSER: '${WWWUSER}'
+            LARAVEL_SAIL: 1
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - sail
+        depends_on:
+            - laravel.app
 networks:
-  overlay-network:
-    driver: bridge
+    sail:
+        driver: bridge
+volumes:
+    sailmysql:
+        driver: local
+    sailredis:
+        driver: local
