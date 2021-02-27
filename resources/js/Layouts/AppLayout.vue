@@ -8,7 +8,7 @@
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
                             <inertia-link :href="route('dashboard')">
-                                <jet-application-mark class="block h-9 w-auto" />
+                                <img src="/assets/open-overlay/openoverlay-icon.svg" title="OpenOverlay Title" class="w-14">
                             </inertia-link>
                         </div>
 

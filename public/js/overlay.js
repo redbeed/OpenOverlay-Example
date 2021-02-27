@@ -6285,7 +6285,7 @@ if (twitchUserId) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/PROJECTS/moVRs/openOverlay/app/resources/js/overlay.js */"./resources/js/overlay.js");
+module.exports = __webpack_require__(/*! /Users/chris/Developer/redbeed/openOverlay/OpenOverlay-Standalone/resources/js/overlay.js */"./resources/js/overlay.js");
 
 
 /***/ })
