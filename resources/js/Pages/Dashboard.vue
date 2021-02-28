@@ -6,7 +6,7 @@
             </h2>
         </template>
 
-        <open-overlay-check />
+        <open-overlay-check :twitch-available="this.twitchAvailable" />
 
         <div class="my-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -24,6 +24,10 @@
     import OpenOverlayCheck from '@/OpenOverlay/Check';
 
     export default {
+        props: {
+            twitchAvailable: Boolean,
+        },
+
         components: {
             AppLayout,
             Welcome,
