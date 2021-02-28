@@ -6,9 +6,10 @@
                 to your <span class="font-mono">.env</span> file.
             </template>
 
-            <button class="flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0">
+            <a href="https://www.openoverlay.dev/docs/add_twitch_api" target="_blank"
+               class="flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0">
                 How to add
-            </button>
+            </a>
         </alert>
     </div>
 </template>

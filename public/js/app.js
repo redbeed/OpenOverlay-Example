@@ -3170,6 +3170,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -53275,10 +53276,14 @@ var render = function() {
             [
               _vm._v(" "),
               _c(
-                "button",
+                "a",
                 {
                   staticClass:
-                    "flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0"
+                    "flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0",
+                  attrs: {
+                    href: "https://www.openoverlay.dev/docs/add_twitch_api",
+                    target: "_blank"
+                  }
                 },
                 [_vm._v("\n            How to add\n        ")]
               )
