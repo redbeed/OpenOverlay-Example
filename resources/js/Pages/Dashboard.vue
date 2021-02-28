@@ -6,7 +6,7 @@
             </h2>
         </template>
 
-        <open-overlay-check :twitch-available="this.twitchAvailable" />
+        <open-overlay-check :twitch-available="this.twitchAvailable" :app-token-available="this.appTokenAvailable" />
 
         <div class="my-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -26,6 +26,7 @@
     export default {
         props: {
             twitchAvailable: Boolean,
+            appTokenAvailable: Boolean,
         },
 
         components: {

@@ -9,10 +9,19 @@ class DashboardController extends Controller
 
     public function __invoke()
     {
-
         return Inertia::render('Dashboard', [
             'twitchAvailable' => $this->twitchApiCheck(),
+            'appTokenAvailable' => $this->appTokenSet(),
         ]);
+    }
+
+    private function twitchLinked(): bool {
+        $
+    }
+
+    private function appTokenSet(): bool
+    {
+        return !empty(config('openoverlay.webhook.twitch.app_token.token'));
     }
 
     private function twitchApiCheck(): bool

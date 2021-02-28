@@ -3171,10 +3171,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     twitchAvailable: {
+      type: Boolean,
+      "default": true
+    },
+    appTokenAvailable: {
       type: Boolean,
       "default": true
     }
@@ -3548,7 +3563,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    twitchAvailable: Boolean
+    twitchAvailable: Boolean,
+    appTokenAvailable: Boolean
   },
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -53250,7 +53266,7 @@ var render = function() {
                     key: "description",
                     fn: function() {
                       return [
-                        _vm._v("\n            Please ass "),
+                        _vm._v("\n            Please add "),
                         _c("span", { staticClass: "font-mono" }, [
                           _vm._v("TWITCH_CLIENT_ID")
                         ]),
@@ -53270,7 +53286,7 @@ var render = function() {
                 ],
                 null,
                 false,
-                1439440103
+                607473415
               )
             },
             [
@@ -53282,6 +53298,54 @@ var render = function() {
                     "flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0",
                   attrs: {
                     href: "https://www.openoverlay.dev/docs/add_twitch_api",
+                    target: "_blank"
+                  }
+                },
+                [_vm._v("\n            How to add\n        ")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.appTokenAvailable === false
+        ? _c(
+            "alert",
+            {
+              attrs: { title: "App Token missing." },
+              scopedSlots: _vm._u(
+                [
+                  {
+                    key: "description",
+                    fn: function() {
+                      return [
+                        _vm._v("\n            Please add "),
+                        _c("span", { staticClass: "font-mono" }, [
+                          _vm._v("OVERLAY_TWITCH_APP_TOKEN")
+                        ]),
+                        _vm._v(" to your "),
+                        _c("span", { staticClass: "font-mono" }, [
+                          _vm._v(".env")
+                        ]),
+                        _vm._v(" file.\n        ")
+                      ]
+                    },
+                    proxy: true
+                  }
+                ],
+                null,
+                false,
+                4269184143
+              )
+            },
+            [
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0",
+                  attrs: {
+                    href: "https://www.openoverlay.dev/docs/generate_app_token",
                     target: "_blank"
                   }
                 },
@@ -54032,7 +54096,10 @@ var render = function() {
     [
       _vm._v(" "),
       _c("open-overlay-check", {
-        attrs: { "twitch-available": this.twitchAvailable }
+        attrs: {
+          "twitch-available": this.twitchAvailable,
+          "app-token-available": this.appTokenAvailable
+        }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "my-12" }, [
