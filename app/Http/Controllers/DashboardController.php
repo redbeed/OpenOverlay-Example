@@ -15,10 +15,6 @@ class DashboardController extends Controller
         ]);
     }
 
-    private function twitchLinked(): bool {
-        $
-    }
-
     private function appTokenSet(): bool
     {
         return !empty(config('openoverlay.webhook.twitch.app_token.token'));
