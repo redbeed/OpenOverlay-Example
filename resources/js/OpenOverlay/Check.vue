@@ -45,7 +45,7 @@
                            class="flex rounded-full bg-purple-500 border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-3">
                             Connect
                         </a>
-                        <a href="https://www.openoverlay.dev/docs/connect_to_twitch" target="_blank"
+                        <a href="https://www.openoverlay.dev/docs/bot/add_a_bot" target="_blank"
                            class="flex rounded-full bg-transparent border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-0">
                             More information
                         </a>
@@ -59,7 +59,7 @@
                     </template>
 
                     <div class="flex items-center mr-0 ml-auto">
-                        <a href="https://www.openoverlay.dev/docs/add_a_bot" target="_blank"
+                        <a href="https://www.openoverlay.dev/docs/bot/add_a_bot" target="_blank"
                            class="flex rounded-full bg-transparent border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-0">
                             How to
                         </a>

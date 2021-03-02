@@ -53513,7 +53513,7 @@ var render = function() {
                                     "flex rounded-full bg-transparent border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-0",
                                   attrs: {
                                     href:
-                                      "https://www.openoverlay.dev/docs/connect_to_twitch",
+                                      "https://www.openoverlay.dev/docs/bot/add_a_bot",
                                     target: "_blank"
                                   }
                                 },
@@ -53567,7 +53567,7 @@ var render = function() {
                                     "flex rounded-full bg-transparent border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-0",
                                   attrs: {
                                     href:
-                                      "https://www.openoverlay.dev/docs/add_a_bot",
+                                      "https://www.openoverlay.dev/docs/bot/add_a_bot",
                                     target: "_blank"
                                   }
                                 },
