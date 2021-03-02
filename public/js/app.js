@@ -3120,8 +3120,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Alert",
   props: {
@@ -3182,6 +3180,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3190,6 +3233,18 @@ __webpack_require__.r(__webpack_exports__);
       "default": true
     },
     appTokenAvailable: {
+      type: Boolean,
+      "default": true
+    },
+    twitchUserConnected: {
+      type: Boolean,
+      "default": true
+    },
+    botConnected: {
+      type: Boolean,
+      "default": true
+    },
+    botUserLinked: {
       type: Boolean,
       "default": true
     }
@@ -3558,13 +3613,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     twitchAvailable: Boolean,
-    appTokenAvailable: Boolean
+    appTokenAvailable: Boolean,
+    twitchUserConnected: Boolean,
+    botConnected: Boolean,
+    botUserLinked: Boolean
   },
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -53199,35 +53262,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
-    _c(
-      "div",
-      { class: this.alertClass },
-      [
-        _c(
-          "span",
-          { staticClass: "inline-block align-middle mr-8" },
-          [
-            _c("b", { staticClass: "capitalize block mb-2 text-xl" }, [
-              _vm._v(_vm._s(this.title))
-            ]),
-            _vm._v(" "),
-            _vm._t("description", [
-              _vm._v(
-                "\n                " +
-                  _vm._s(this.description) +
-                  "\n            "
-              )
-            ])
-          ],
-          2
-        ),
-        _vm._v(" "),
-        _vm._t("default")
-      ],
-      2
-    )
-  ])
+  return _c(
+    "div",
+    { class: this.alertClass },
+    [
+      _c(
+        "span",
+        { staticClass: "inline-block align-middle mr-8" },
+        [
+          _c("b", { staticClass: "capitalize block text-xl" }, [
+            _vm._v(_vm._s(this.title))
+          ]),
+          _vm._v(" "),
+          _vm._t("description", [
+            _vm._v("\n            " + _vm._s(this.description) + "\n        ")
+          ])
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _vm._t("default")
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -53253,109 +53310,286 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "my-12" },
+    { staticClass: "container mx-auto max-w-7xl mx-auto sm:px-6 lg:px-8" },
     [
-      this.twitchAvailable === false
-        ? _c(
-            "alert",
-            {
-              attrs: { title: "Twitch Settings missing." },
-              scopedSlots: _vm._u(
-                [
-                  {
-                    key: "description",
-                    fn: function() {
-                      return [
-                        _vm._v("\n            Please add "),
-                        _c("span", { staticClass: "font-mono" }, [
-                          _vm._v("TWITCH_CLIENT_ID")
-                        ]),
-                        _vm._v(" and "),
-                        _c("span", { staticClass: "font-mono" }, [
-                          _vm._v("TWITCH_CLIENT_SECRET")
-                        ]),
-                        _vm._v("\n            to your "),
-                        _c("span", { staticClass: "font-mono" }, [
-                          _vm._v(".env")
-                        ]),
-                        _vm._v(" file.\n        ")
-                      ]
-                    },
-                    proxy: true
-                  }
-                ],
-                null,
-                false,
-                607473415
-              )
-            },
-            [
-              _vm._v(" "),
-              _c(
-                "a",
+      _c(
+        "div",
+        { staticClass: "my-12" },
+        [
+          this.twitchAvailable === false
+            ? _c(
+                "alert",
                 {
-                  staticClass:
-                    "flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0",
-                  attrs: {
-                    href: "https://www.openoverlay.dev/docs/add_twitch_api",
-                    target: "_blank"
-                  }
+                  attrs: { title: "Twitch Settings missing." },
+                  scopedSlots: _vm._u(
+                    [
+                      {
+                        key: "description",
+                        fn: function() {
+                          return [
+                            _vm._v("\n                Please add "),
+                            _c("span", { staticClass: "font-mono" }, [
+                              _vm._v("TWITCH_CLIENT_ID")
+                            ]),
+                            _vm._v(" and "),
+                            _c("span", { staticClass: "font-mono" }, [
+                              _vm._v("TWITCH_CLIENT_SECRET")
+                            ]),
+                            _vm._v("\n                to your "),
+                            _c("span", { staticClass: "font-mono" }, [
+                              _vm._v(".env")
+                            ]),
+                            _vm._v(" file.\n            ")
+                          ]
+                        },
+                        proxy: true
+                      }
+                    ],
+                    null,
+                    false,
+                    3942059271
+                  )
                 },
-                [_vm._v("\n            How to add\n        ")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.appTokenAvailable === false
-        ? _c(
-            "alert",
-            {
-              attrs: { title: "App Token missing." },
-              scopedSlots: _vm._u(
                 [
-                  {
-                    key: "description",
-                    fn: function() {
-                      return [
-                        _vm._v("\n            Please add "),
-                        _c("span", { staticClass: "font-mono" }, [
-                          _vm._v("OVERLAY_TWITCH_APP_TOKEN")
-                        ]),
-                        _vm._v(" to your "),
-                        _c("span", { staticClass: "font-mono" }, [
-                          _vm._v(".env")
-                        ]),
-                        _vm._v(" file.\n        ")
-                      ]
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0",
+                      attrs: {
+                        href: "https://www.openoverlay.dev/docs/add_twitch_api",
+                        target: "_blank"
+                      }
                     },
-                    proxy: true
-                  }
-                ],
-                null,
-                false,
-                4269184143
+                    [_vm._v("\n                How to add\n            ")]
+                  )
+                ]
               )
-            },
-            [
-              _vm._v(" "),
-              _c(
-                "a",
+            : _vm._e(),
+          _vm._v(" "),
+          this.appTokenAvailable === false
+            ? _c(
+                "alert",
                 {
-                  staticClass:
-                    "flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0",
-                  attrs: {
-                    href: "https://www.openoverlay.dev/docs/generate_app_token",
-                    target: "_blank"
-                  }
+                  attrs: { title: "App Token missing." },
+                  scopedSlots: _vm._u(
+                    [
+                      {
+                        key: "description",
+                        fn: function() {
+                          return [
+                            _vm._v("\n                Please add "),
+                            _c("span", { staticClass: "font-mono" }, [
+                              _vm._v("OVERLAY_TWITCH_APP_TOKEN")
+                            ]),
+                            _vm._v(" to your "),
+                            _c("span", { staticClass: "font-mono" }, [
+                              _vm._v(".env")
+                            ]),
+                            _vm._v(" file.\n            ")
+                          ]
+                        },
+                        proxy: true
+                      }
+                    ],
+                    null,
+                    false,
+                    3770572943
+                  )
                 },
-                [_vm._v("\n            How to add\n        ")]
+                [
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0",
+                      attrs: {
+                        href:
+                          "https://www.openoverlay.dev/docs/generate_app_token",
+                        target: "_blank"
+                      }
+                    },
+                    [_vm._v("\n                How to add\n            ")]
+                  )
+                ]
               )
-            ]
-          )
-        : _vm._e()
-    ],
-    1
+            : _vm._e(),
+          _vm._v(" "),
+          this.appTokenAvailable === true && this.twitchAvailable === true
+            ? _c(
+                "div",
+                { staticClass: "grid grid-cols-1 md:grid-cols-2 gap-4 " },
+                [
+                  this.twitchUserConnected === false
+                    ? _c(
+                        "alert",
+                        {
+                          attrs: {
+                            title: "Connect your twitch account",
+                            color: "purple"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "flex items-center mr-0 ml-auto" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "flex rounded-full bg-purple-500 border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-3",
+                                  attrs: {
+                                    href: _vm.route(
+                                      "open_overlay.connection.redirect"
+                                    ),
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        Connect\n                    "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "flex rounded-full bg-transparent border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-0",
+                                  attrs: {
+                                    href:
+                                      "https://www.openoverlay.dev/docs/connect_to_twitch",
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        More information\n                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.botConnected === false
+                    ? _c(
+                        "alert",
+                        { attrs: { title: "Add a Bot", color: "gray" } },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "flex items-center mr-0 ml-auto" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "flex rounded-full bg-purple-500 border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-3",
+                                  attrs: {
+                                    href: _vm.route(
+                                      "open_overlay.connection.bot.redirect"
+                                    ),
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        Connect\n                    "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "flex rounded-full bg-transparent border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-0",
+                                  attrs: {
+                                    href:
+                                      "https://www.openoverlay.dev/docs/connect_to_twitch",
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        More information\n                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    : this.botUserLinked === false
+                    ? _c(
+                        "alert",
+                        {
+                          attrs: {
+                            title: "Link a bot to your account",
+                            color: "gray"
+                          },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "description",
+                                fn: function() {
+                                  return [
+                                    _vm._v(
+                                      "\n                    You need to connect a bot to your account and restart the bot container.\n                "
+                                    )
+                                  ]
+                                },
+                                proxy: true
+                              }
+                            ],
+                            null,
+                            false,
+                            986468177
+                          )
+                        },
+                        [
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "flex items-center mr-0 ml-auto" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "flex rounded-full bg-transparent border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-0",
+                                  attrs: {
+                                    href:
+                                      "https://www.openoverlay.dev/docs/add_a_bot",
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        How to\n                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    : _vm._e()
+                ],
+                1
+              )
+            : _vm._e()
+        ],
+        1
+      )
+    ]
   )
 }
 var staticRenderFns = []
@@ -54098,7 +54332,10 @@ var render = function() {
       _c("open-overlay-check", {
         attrs: {
           "twitch-available": this.twitchAvailable,
-          "app-token-available": this.appTokenAvailable
+          "app-token-available": this.appTokenAvailable,
+          "twitch-user-connected": this.twitchUserConnected,
+          "bot-connected": this.botConnected,
+          "bot-user-linked": this.botUserLinked
         }
       }),
       _vm._v(" "),

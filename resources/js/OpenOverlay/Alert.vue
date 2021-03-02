@@ -1,14 +1,12 @@
 <template>
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div :class="this.alertClass">
-            <span class="inline-block align-middle mr-8">
-                <b class="capitalize block mb-2 text-xl">{{ this.title }}</b>
-                <slot name="description">
-                    {{ this.description }}
-                </slot>
-            </span>
-            <slot></slot>
-        </div>
+    <div :class="this.alertClass">
+        <span class="inline-block align-middle mr-8">
+            <b class="capitalize block text-xl">{{ this.title }}</b>
+            <slot name="description">
+                {{ this.description }}
+            </slot>
+        </span>
+        <slot></slot>
     </div>
 </template>
 
