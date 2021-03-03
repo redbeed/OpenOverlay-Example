@@ -26,7 +26,7 @@
             </alert>
 
             <div v-if="this.appTokenAvailable === true && this.twitchAvailable === true" class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-                <alert v-if="this.twitchUserConnected === false" title="Connect your twitch account" color="purple">
+                <alert v-if="this.twitchUserConnected === null" title="Connect your twitch account" color="purple">
                     <div class="flex items-center mr-0 ml-auto">
                         <a :href="route('open_overlay.connection.redirect')" target="_blank"
                            class="flex rounded-full bg-purple-500 border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-3">
@@ -35,6 +35,14 @@
                         <a href="https://www.openoverlay.dev/docs/connect_to_twitch" target="_blank"
                            class="flex rounded-full bg-transparent border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-0">
                             More information
+                        </a>
+                    </div>
+                </alert>
+                <alert v-else title="Your overlay" color="purple">
+                    <div class="flex items-center mr-0 ml-auto">
+                        <a :href="route('overlay.example', {twitchUserId: this.twitchUserConnected})" target="_blank"
+                           class="flex rounded-full bg-purple-500 border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-3">
+                            Open overlay
                         </a>
                     </div>
                 </alert>
@@ -85,7 +93,7 @@ export default {
             default: true,
         },
         twitchUserConnected: {
-            type: Boolean,
+            type: String,
             default: true,
         },
         botConnected: {

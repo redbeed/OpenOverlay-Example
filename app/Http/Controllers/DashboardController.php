@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Redbeed\OpenOverlay\Models\BotConnection;
@@ -30,9 +31,12 @@ class DashboardController extends Controller
         return BotConnection::where('service', 'twitch')->count() > 0;
     }
 
-    private function twitchUserConnected(): bool
+    private function twitchUserConnected(): ?string
     {
-        return Auth::user()->connections()->where('service', 'twitch')->count() > 0;
+        /** @var Collection $connection */
+        $connection = Auth::user()->connections()->where('service', 'twitch')->get();
+
+        return count($connection) ? $connection->first()->service_user_id : null;
     }
 
     private function appTokenSet(): bool

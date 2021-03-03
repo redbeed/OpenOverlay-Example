@@ -3225,6 +3225,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3237,7 +3245,7 @@ __webpack_require__.r(__webpack_exports__);
       "default": true
     },
     twitchUserConnected: {
-      type: Boolean,
+      type: String,
       "default": true
     },
     botConnected: {
@@ -3625,7 +3633,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     twitchAvailable: Boolean,
     appTokenAvailable: Boolean,
-    twitchUserConnected: Boolean,
+    twitchUserConnected: String,
     botConnected: Boolean,
     botUserLinked: Boolean
   },
@@ -53422,7 +53430,7 @@ var render = function() {
                 "div",
                 { staticClass: "grid grid-cols-1 md:grid-cols-2 gap-4 " },
                 [
-                  this.twitchUserConnected === false
+                  this.twitchUserConnected === null
                     ? _c(
                         "alert",
                         {
@@ -53476,7 +53484,36 @@ var render = function() {
                           )
                         ]
                       )
-                    : _vm._e(),
+                    : _c(
+                        "alert",
+                        { attrs: { title: "Your overlay", color: "purple" } },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "flex items-center mr-0 ml-auto" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "flex rounded-full bg-purple-500 border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-3",
+                                  attrs: {
+                                    href: _vm.route("overlay.example", {
+                                      twitchUserId: this.twitchUserConnected
+                                    }),
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        Open overlay\n                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      ),
                   _vm._v(" "),
                   this.botConnected === false
                     ? _c(

@@ -32,7 +32,7 @@ export default {
     props: {
         twitchAvailable: Boolean,
         appTokenAvailable: Boolean,
-        twitchUserConnected: Boolean,
+        twitchUserConnected: String,
         botConnected: Boolean,
         botUserLinked: Boolean,
     },

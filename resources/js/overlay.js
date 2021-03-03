@@ -1,5 +1,6 @@
 import Echo from "laravel-echo";
 import LatestEvent from "@/OverlayExamples/LatestEvent";
+import SteamHUD from "@/OverlayExamples/SteamHUD";
 
 window.Pusher = require('pusher-js');
 
@@ -16,4 +17,5 @@ const twitchUserId = document.body.getAttribute('data-twitch-user');
 
 if (twitchUserId) {
     new LatestEvent(twitchUserId);
+    new SteamHUD(twitchUserId);
 }

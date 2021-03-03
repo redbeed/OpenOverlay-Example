@@ -1,5 +1,15 @@
 @extends('layouts.overlay')
 
 @section('content')
-    <x-latest-event :recentList="$followers"/>
+    <div class="relative h-screen w-screen">
+        @if(request()->has('fake'))
+            <img src="{{ asset('assets/overlay/population-one.png') }}" class="h-full w-auto">
+        @endif
+
+        <x-steam-hud :twitchUserId="$twitchUserId"
+                     :socialIcons="['fab fa-twitter', 'fab fa-youtube']"
+                     :mainColor="'flamingo'">
+
+        </x-steam-hud>
+    </div>
 @endsection

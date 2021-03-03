@@ -5,7 +5,7 @@
         </span>
     </div>
     <div class="col-span-4 px-3 py-4">
-        <div id="latest-event-title" class="text-purple-300 text-lg">Latest Follower</div>
-        <div id="latest-event-username" class="text-3xl">{{ $recentUsername }}</div>
+        <div id="latest-event-title" class="text-purple-300 text-lg">{{ $recent['title'] }}</div>
+        <div id="latest-event-username" class="text-3xl">{{ $recent['name'] }}</div>
     </div>
 </div>
