@@ -2828,17 +2828,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3105,6 +3094,171 @@ __webpack_require__.r(__webpack_exports__);
         window.location = '/';
       });
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/OpenOverlay/Alert.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/OpenOverlay/Alert.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Alert",
+  props: {
+    color: {
+      type: String,
+      "default": 'tomato'
+    },
+    title: {
+      type: String
+    },
+    description: {
+      type: String
+    }
+  },
+  computed: {
+    alertClass: function alertClass() {
+      return ['flex flex-col sm:flex-row items-center text-white justify-items-center px-6 py-4 border-0 sm:rounded-lg relative mb-4', "bg-".concat(this.color, "-800")];
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/OpenOverlay/Check.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/OpenOverlay/Check.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _OpenOverlay_Alert__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/OpenOverlay/Alert */ "./resources/js/OpenOverlay/Alert.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    twitchAvailable: {
+      type: Boolean,
+      "default": true
+    },
+    appTokenAvailable: {
+      type: Boolean,
+      "default": true
+    },
+    twitchUserConnected: {
+      type: String,
+      "default": true
+    },
+    botConnected: {
+      type: Boolean,
+      "default": true
+    },
+    botUserLinked: {
+      type: Boolean,
+      "default": true
+    }
+  },
+  components: {
+    Alert: _OpenOverlay_Alert__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
@@ -3446,6 +3600,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Welcome */ "./resources/js/Jetstream/Welcome.vue");
+/* harmony import */ var _OpenOverlay_Check__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/OpenOverlay/Check */ "./resources/js/OpenOverlay/Check.vue");
 //
 //
 //
@@ -3464,12 +3619,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    twitchAvailable: Boolean,
+    appTokenAvailable: Boolean,
+    twitchUserConnected: String,
+    botConnected: Boolean,
+    botUserLinked: Boolean
+  },
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Welcome: _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Welcome: _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__["default"],
+    OpenOverlayCheck: _OpenOverlay_Check__WEBPACK_IMPORTED_MODULE_2__["default"]
   }
 });
 
@@ -52084,19 +52255,7 @@ var render = function() {
           "div",
           [_c("jet-application-logo", { staticClass: "block h-12 w-auto" })],
           1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "mt-8 text-2xl" }, [
-          _vm._v(
-            "\n            Welcome to your Jetstream application!\n        "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "mt-6 text-gray-500" }, [
-          _vm._v(
-            "\n            Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed\n            to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe\n            you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel\n            ecosystem to be a breath of fresh air. We hope you love it.\n        "
-          )
-        ])
+        )
       ]
     ),
     _vm._v(" "),
@@ -52433,11 +52592,14 @@ var render = function() {
                     "inertia-link",
                     { attrs: { href: _vm.route("dashboard") } },
                     [
-                      _c("jet-application-mark", {
-                        staticClass: "block h-9 w-auto"
+                      _c("img", {
+                        staticClass: "w-14",
+                        attrs: {
+                          src: "/assets/open-overlay/openoverlay-icon.svg",
+                          title: "OpenOverlay Title"
+                        }
                       })
-                    ],
-                    1
+                    ]
                   )
                 ],
                 1
@@ -53084,6 +53246,387 @@ var render = function() {
       _c("portal-target", { attrs: { name: "modal", multiple: "" } })
     ],
     1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/OpenOverlay/Alert.vue?vue&type=template&id=7cf93465&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/OpenOverlay/Alert.vue?vue&type=template&id=7cf93465&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { class: this.alertClass },
+    [
+      _c(
+        "span",
+        { staticClass: "inline-block align-middle mr-8" },
+        [
+          _c("b", { staticClass: "capitalize block text-xl" }, [
+            _vm._v(_vm._s(this.title))
+          ]),
+          _vm._v(" "),
+          _vm._t("description", [
+            _vm._v("\n            " + _vm._s(this.description) + "\n        ")
+          ])
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _vm._t("default")
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/OpenOverlay/Check.vue?vue&type=template&id=28344bde&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/OpenOverlay/Check.vue?vue&type=template&id=28344bde& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container mx-auto max-w-7xl mx-auto sm:px-6 lg:px-8" },
+    [
+      _c(
+        "div",
+        { staticClass: "my-12" },
+        [
+          this.twitchAvailable === false
+            ? _c(
+                "alert",
+                {
+                  attrs: { title: "Twitch Settings missing." },
+                  scopedSlots: _vm._u(
+                    [
+                      {
+                        key: "description",
+                        fn: function() {
+                          return [
+                            _vm._v("\n                Please add "),
+                            _c("span", { staticClass: "font-mono" }, [
+                              _vm._v("TWITCH_CLIENT_ID")
+                            ]),
+                            _vm._v(" and "),
+                            _c("span", { staticClass: "font-mono" }, [
+                              _vm._v("TWITCH_CLIENT_SECRET")
+                            ]),
+                            _vm._v("\n                to your "),
+                            _c("span", { staticClass: "font-mono" }, [
+                              _vm._v(".env")
+                            ]),
+                            _vm._v(" file.\n            ")
+                          ]
+                        },
+                        proxy: true
+                      }
+                    ],
+                    null,
+                    false,
+                    3942059271
+                  )
+                },
+                [
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0",
+                      attrs: {
+                        href: "https://www.openoverlay.dev/docs/add_twitch_api",
+                        target: "_blank"
+                      }
+                    },
+                    [_vm._v("\n                How to add\n            ")]
+                  )
+                ]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          this.appTokenAvailable === false
+            ? _c(
+                "alert",
+                {
+                  attrs: { title: "App Token missing." },
+                  scopedSlots: _vm._u(
+                    [
+                      {
+                        key: "description",
+                        fn: function() {
+                          return [
+                            _vm._v("\n                Please add "),
+                            _c("span", { staticClass: "font-mono" }, [
+                              _vm._v("OVERLAY_TWITCH_APP_TOKEN")
+                            ]),
+                            _vm._v(" to your "),
+                            _c("span", { staticClass: "font-mono" }, [
+                              _vm._v(".env")
+                            ]),
+                            _vm._v(" file.\n            ")
+                          ]
+                        },
+                        proxy: true
+                      }
+                    ],
+                    null,
+                    false,
+                    3770572943
+                  )
+                },
+                [
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0",
+                      attrs: {
+                        href:
+                          "https://www.openoverlay.dev/docs/generate_app_token",
+                        target: "_blank"
+                      }
+                    },
+                    [_vm._v("\n                How to add\n            ")]
+                  )
+                ]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          this.appTokenAvailable === true && this.twitchAvailable === true
+            ? _c(
+                "div",
+                { staticClass: "grid grid-cols-1 md:grid-cols-2 gap-4 " },
+                [
+                  this.twitchUserConnected === null
+                    ? _c(
+                        "alert",
+                        {
+                          attrs: {
+                            title: "Connect your twitch account",
+                            color: "purple"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "flex items-center mr-0 ml-auto" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "flex rounded-full bg-purple-500 border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-3",
+                                  attrs: {
+                                    href: _vm.route(
+                                      "open_overlay.connection.redirect"
+                                    ),
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        Connect\n                    "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "flex rounded-full bg-transparent border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-0",
+                                  attrs: {
+                                    href:
+                                      "https://www.openoverlay.dev/docs/connect_to_twitch",
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        More information\n                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    : _c(
+                        "alert",
+                        { attrs: { title: "Your overlay", color: "purple" } },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "flex items-center mr-0 ml-auto" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "flex rounded-full bg-purple-500 border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-3",
+                                  attrs: {
+                                    href: _vm.route("overlay.example", {
+                                      twitchUserId: this.twitchUserConnected
+                                    }),
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        Open overlay\n                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      ),
+                  _vm._v(" "),
+                  this.botConnected === false
+                    ? _c(
+                        "alert",
+                        { attrs: { title: "Add a Bot", color: "gray" } },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "flex items-center mr-0 ml-auto" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "flex rounded-full bg-purple-500 border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-3",
+                                  attrs: {
+                                    href: _vm.route(
+                                      "open_overlay.connection.bot.redirect"
+                                    ),
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        Connect\n                    "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "flex rounded-full bg-transparent border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-0",
+                                  attrs: {
+                                    href:
+                                      "https://www.openoverlay.dev/docs/bot/add_a_bot",
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        More information\n                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    : this.botUserLinked === false
+                    ? _c(
+                        "alert",
+                        {
+                          attrs: {
+                            title: "Link a bot to your account",
+                            color: "gray"
+                          },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "description",
+                                fn: function() {
+                                  return [
+                                    _vm._v(
+                                      "\n                    You need to connect a bot to your account and restart the bot container.\n                "
+                                    )
+                                  ]
+                                },
+                                proxy: true
+                              }
+                            ],
+                            null,
+                            false,
+                            986468177
+                          )
+                        },
+                        [
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "flex items-center mr-0 ml-auto" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "flex rounded-full bg-transparent border-purple-500 whitespace-no-wrap border-2 uppercase px-3 py-2 font-bold ml-auto mr-0",
+                                  attrs: {
+                                    href:
+                                      "https://www.openoverlay.dev/docs/bot/add_a_bot",
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        How to\n                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    : _vm._e()
+                ],
+                1
+              )
+            : _vm._e()
+        ],
+        1
+      )
+    ]
   )
 }
 var staticRenderFns = []
@@ -53823,7 +54366,17 @@ var render = function() {
     },
     [
       _vm._v(" "),
-      _c("div", { staticClass: "py-12" }, [
+      _c("open-overlay-check", {
+        attrs: {
+          "twitch-available": this.twitchAvailable,
+          "app-token-available": this.appTokenAvailable,
+          "twitch-user-connected": this.twitchUserConnected,
+          "bot-connected": this.botConnected,
+          "bot-user-linked": this.botUserLinked
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "my-12" }, [
         _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
           _c(
             "div",
@@ -53833,7 +54386,8 @@ var render = function() {
           )
         ])
       ])
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -69004,6 +69558,144 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/OpenOverlay/Alert.vue":
+/*!********************************************!*\
+  !*** ./resources/js/OpenOverlay/Alert.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Alert_vue_vue_type_template_id_7cf93465_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Alert.vue?vue&type=template&id=7cf93465&scoped=true& */ "./resources/js/OpenOverlay/Alert.vue?vue&type=template&id=7cf93465&scoped=true&");
+/* harmony import */ var _Alert_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Alert.vue?vue&type=script&lang=js& */ "./resources/js/OpenOverlay/Alert.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Alert_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Alert_vue_vue_type_template_id_7cf93465_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Alert_vue_vue_type_template_id_7cf93465_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "7cf93465",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/OpenOverlay/Alert.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/OpenOverlay/Alert.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/OpenOverlay/Alert.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Alert_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Alert.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/OpenOverlay/Alert.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Alert_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/OpenOverlay/Alert.vue?vue&type=template&id=7cf93465&scoped=true&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/OpenOverlay/Alert.vue?vue&type=template&id=7cf93465&scoped=true& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Alert_vue_vue_type_template_id_7cf93465_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Alert.vue?vue&type=template&id=7cf93465&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/OpenOverlay/Alert.vue?vue&type=template&id=7cf93465&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Alert_vue_vue_type_template_id_7cf93465_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Alert_vue_vue_type_template_id_7cf93465_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/OpenOverlay/Check.vue":
+/*!********************************************!*\
+  !*** ./resources/js/OpenOverlay/Check.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Check_vue_vue_type_template_id_28344bde___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Check.vue?vue&type=template&id=28344bde& */ "./resources/js/OpenOverlay/Check.vue?vue&type=template&id=28344bde&");
+/* harmony import */ var _Check_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Check.vue?vue&type=script&lang=js& */ "./resources/js/OpenOverlay/Check.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Check_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Check_vue_vue_type_template_id_28344bde___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Check_vue_vue_type_template_id_28344bde___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/OpenOverlay/Check.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/OpenOverlay/Check.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/OpenOverlay/Check.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Check_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Check.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/OpenOverlay/Check.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Check_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/OpenOverlay/Check.vue?vue&type=template&id=28344bde&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/OpenOverlay/Check.vue?vue&type=template&id=28344bde& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Check_vue_vue_type_template_id_28344bde___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Check.vue?vue&type=template&id=28344bde& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/OpenOverlay/Check.vue?vue&type=template&id=28344bde&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Check_vue_vue_type_template_id_28344bde___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Check_vue_vue_type_template_id_28344bde___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages sync recursive ^\\.\\/.*$":
 /*!******************************************!*\
   !*** ./resources/js/Pages sync ^\.\/.*$ ***!
@@ -69845,8 +70537,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Volumes/Data/PROJECTS/moVRs/openOverlay/app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Volumes/Data/PROJECTS/moVRs/openOverlay/app/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Users/chris/Developer/redbeed/openOverlay/OpenOverlay-Standalone/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/chris/Developer/redbeed/openOverlay/OpenOverlay-Standalone/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

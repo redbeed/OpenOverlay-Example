@@ -6,10 +6,17 @@
             </h2>
         </template>
 
-        <div class="py-12">
+        <open-overlay-check
+            :twitch-available="this.twitchAvailable"
+            :app-token-available="this.appTokenAvailable"
+            :twitch-user-connected="this.twitchUserConnected"
+            :bot-connected="this.botConnected"
+            :bot-user-linked="this.botUserLinked"/>
+
+        <div class="my-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <welcome />
+                    <welcome/>
                 </div>
             </div>
         </div>
@@ -17,13 +24,23 @@
 </template>
 
 <script>
-    import AppLayout from '@/Layouts/AppLayout'
-    import Welcome from '@/Jetstream/Welcome'
+import AppLayout from '@/Layouts/AppLayout'
+import Welcome from '@/Jetstream/Welcome'
+import OpenOverlayCheck from '@/OpenOverlay/Check';
 
-    export default {
-        components: {
-            AppLayout,
-            Welcome,
-        },
-    }
+export default {
+    props: {
+        twitchAvailable: Boolean,
+        appTokenAvailable: Boolean,
+        twitchUserConnected: String,
+        botConnected: Boolean,
+        botUserLinked: Boolean,
+    },
+
+    components: {
+        AppLayout,
+        Welcome,
+        OpenOverlayCheck,
+    },
+}
 </script>

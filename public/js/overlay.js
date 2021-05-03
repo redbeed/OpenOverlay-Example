@@ -6210,6 +6210,7 @@ var LatestEvent = /*#__PURE__*/function () {
 
     this.twitchUserId = twitchUserId;
     this.container = document.getElementById('latest-event');
+    if (!this.container) return;
     this.titleElement = document.getElementById('latest-event-title');
     this.usernameElement = document.getElementById('latest-event-username');
     this.types = {
@@ -6235,13 +6236,72 @@ var LatestEvent = /*#__PURE__*/function () {
   }, {
     key: "replaceUser",
     value: function replaceUser(eventData) {
-      console.log('replace');
       this.titleElement.textContent = this.types[eventData.type] || 'Unkown';
       this.usernameElement.textContent = eventData.data.user_name;
     }
   }]);
 
   return LatestEvent;
+}();
+
+
+
+/***/ }),
+
+/***/ "./resources/js/OverlayExamples/SteamHUD.js":
+/*!**************************************************!*\
+  !*** ./resources/js/OverlayExamples/SteamHUD.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SteamHUD; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var SteamHUD = /*#__PURE__*/function () {
+  function SteamHUD(twitchUserId) {
+    _classCallCheck(this, SteamHUD);
+
+    this.twitchUserId = twitchUserId;
+    this.container = document.getElementById('steam-hud');
+    if (!this.container) return;
+    this.titleElement = document.getElementById('steam-hud-title');
+    this.usernameElement = document.getElementById('steam-hud-username');
+    this.types = {
+      'channel.follow': 'Latest Follower',
+      'channel.subscribe': 'Latest Subscriber'
+    };
+    this.subscribeEcho();
+  }
+
+  _createClass(SteamHUD, [{
+    key: "subscribeEcho",
+    value: function subscribeEcho() {
+      var _this = this;
+
+      Echo.channel("twitch.".concat(this.twitchUserId)).listen('.event-received', function (eventData) {
+        if (eventData.type === 'channel.follow' || eventData.type === 'channel.subscribe') {
+          _this.replaceUser(eventData);
+
+          console.log('POP');
+        }
+      });
+    }
+  }, {
+    key: "replaceUser",
+    value: function replaceUser(eventData) {
+      this.titleElement.textContent = this.types[eventData.type] || 'Unkown';
+      this.usernameElement.textContent = eventData.data.user_name;
+    }
+  }]);
+
+  return SteamHUD;
 }();
 
 
@@ -6259,6 +6319,8 @@ var LatestEvent = /*#__PURE__*/function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
 /* harmony import */ var _OverlayExamples_LatestEvent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/OverlayExamples/LatestEvent */ "./resources/js/OverlayExamples/LatestEvent.js");
+/* harmony import */ var _OverlayExamples_SteamHUD__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/OverlayExamples/SteamHUD */ "./resources/js/OverlayExamples/SteamHUD.js");
+
 
 
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
@@ -6274,6 +6336,7 @@ var twitchUserId = document.body.getAttribute('data-twitch-user');
 
 if (twitchUserId) {
   new _OverlayExamples_LatestEvent__WEBPACK_IMPORTED_MODULE_1__["default"](twitchUserId);
+  new _OverlayExamples_SteamHUD__WEBPACK_IMPORTED_MODULE_2__["default"](twitchUserId);
 }
 
 /***/ }),
@@ -6285,7 +6348,7 @@ if (twitchUserId) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/PROJECTS/moVRs/openOverlay/app/resources/js/overlay.js */"./resources/js/overlay.js");
+module.exports = __webpack_require__(/*! /Users/chris/Developer/redbeed/openOverlay/OpenOverlay-Standalone/resources/js/overlay.js */"./resources/js/overlay.js");
 
 
 /***/ })

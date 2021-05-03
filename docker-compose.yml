@@ -18,9 +18,9 @@ services:
         networks:
             - sail
         depends_on:
-            - mysql
+            - laravel.mysql
             - redis
-    mysql:
+    laravel.mysql:
         image: 'mysql:8.0'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'

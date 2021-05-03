@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OverlayExampleController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia\Inertia::render('Dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/dashboard', DashboardController::class)
+    ->name('dashboard');
 
 Route::get('overlay/{twitchUserId}')->uses(OverlayExampleController::class)
     ->name('overlay.example');

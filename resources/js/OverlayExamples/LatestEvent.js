@@ -2,6 +2,9 @@ export default class LatestEvent {
     constructor(twitchUserId) {
         this.twitchUserId = twitchUserId;
         this.container = document.getElementById('latest-event');
+
+        if(!this.container) return;
+
         this.titleElement = document.getElementById('latest-event-title');
         this.usernameElement = document.getElementById('latest-event-username');
 
@@ -24,7 +27,6 @@ export default class LatestEvent {
     }
 
     replaceUser(eventData) {
-        console.log('replace');
         this.titleElement.textContent = this.types[eventData.type] || 'Unkown';
         this.usernameElement.textContent = eventData.data.user_name;
     }
