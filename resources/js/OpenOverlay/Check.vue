@@ -19,10 +19,16 @@
                     class="font-mono">.env</span> file.
                 </template>
 
+                <div class="flex items-center mr-0 ml-auto">
                 <a href="https://www.openoverlay.dev/docs/generate_app_token" target="_blank"
-                   class="flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0">
+                   class="flex rounded-full bg-tomato-500 border-tomato-500 border-2 uppercase px-3 py-2 font-bold ml-auto mr-3">
                     How to add
                 </a>
+                <a :href="route('open_overlay.connection.app-token.redirect')" target="_blank"
+                   class="flex rounded-full bg-transparent border-tomato-500 border-2 uppercase px-3 py-2 font-bold ml-auto mr-0">
+                    Start Auth
+                </a>
+                </div>
             </alert>
 
             <div v-if="this.appTokenAvailable === true && this.twitchAvailable === true" class="grid grid-cols-1 md:grid-cols-2 gap-4 ">

@@ -3233,6 +3233,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -53408,19 +53414,36 @@ var render = function() {
                 },
                 [
                   _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "flex rounded-full bg-tomato-500 uppercase px-3 py-2 font-bold ml-auto mr-0",
-                      attrs: {
-                        href:
-                          "https://www.openoverlay.dev/docs/generate_app_token",
-                        target: "_blank"
-                      }
-                    },
-                    [_vm._v("\n                How to add\n            ")]
-                  )
+                  _c("div", { staticClass: "flex items-center mr-0 ml-auto" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "flex rounded-full bg-tomato-500 border-tomato-500 border-2 uppercase px-3 py-2 font-bold ml-auto mr-3",
+                        attrs: {
+                          href:
+                            "https://www.openoverlay.dev/docs/generate_app_token",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("\n                How to add\n            ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "flex rounded-full bg-transparent border-tomato-500 border-2 uppercase px-3 py-2 font-bold ml-auto mr-0",
+                        attrs: {
+                          href: _vm.route(
+                            "open_overlay.connection.app-token.redirect"
+                          ),
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("\n                Start Auth\n            ")]
+                    )
+                  ])
                 ]
               )
             : _vm._e(),
@@ -70537,8 +70560,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/chris/Developer/redbeed/openOverlay/OpenOverlay-Standalone/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/chris/Developer/redbeed/openOverlay/OpenOverlay-Standalone/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /var/www/html/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/html/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
