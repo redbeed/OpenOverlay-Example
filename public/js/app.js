@@ -55072,7 +55072,7 @@ var render = function() {
         proxy: true
       },
       {
-        key: "fxorm",
+        key: "form",
         fn: function() {
           return [
             _vm.$page.twitchUser
