@@ -24,13 +24,19 @@ export default {
         description: {
             type: String,
         },
+        class: {
+            type: String,
+        }
     },
 
     computed: {
         alertClass() {
+            let backgroundColor = this.color !== 'white' ? `bg-${this.color}-800` : `bg-${this.color}`;
+            let textColor = this.color !== 'white' ? 'text-white' : 'text-black';
+
             return [
-                'flex flex-col sm:flex-row items-center text-white justify-items-center px-6 py-4 border-0 sm:rounded-lg relative mb-4',
-                `bg-${this.color}-800`
+                'flex flex-col sm:flex-row items-center justify-items-center px-6 py-4 border-0 sm:rounded-lg relative mb-4',
+                backgroundColor, textColor, this.class
             ];
         }
     }

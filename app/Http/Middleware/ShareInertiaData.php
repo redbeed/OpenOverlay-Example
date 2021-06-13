@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 use Laravel\Jetstream\Jetstream;
 
@@ -23,6 +24,7 @@ class ShareInertiaData
 
                 return $twitch->toArray();
             },
+            'message' => Session::pull('message', null)
         ]));
 
         return $next($request);

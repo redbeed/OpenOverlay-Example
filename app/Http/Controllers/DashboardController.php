@@ -9,7 +9,6 @@ use Redbeed\OpenOverlay\Models\BotConnection;
 
 class DashboardController extends Controller
 {
-
     public function __invoke()
     {
         return Inertia::render('Dashboard', [

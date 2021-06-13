@@ -8,7 +8,7 @@
             Update and refresh you connection with twitch
         </template>
 
-        <template #form>
+        <template #fxorm>
 
             <template v-if="$page.twitchUser">
                 <!-- Username -->

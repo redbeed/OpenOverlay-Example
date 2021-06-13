@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BotController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OverlayExampleController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->route('login');
 });
+
+Route::get('bots')
+    ->uses(BotController::class)
+    ->name('bots');
+
+Route::get('bots/add-to-chat/{botId}')
+    ->uses([BotController::class, 'addBotToChat'])
+    ->name('bots.add-to-chat');
+
+Route::get('bots/remove-from-chat/{botId}')
+    ->uses([BotController::class, 'removeBotFromChat'])
+    ->name('bots.remove-from-chat');
 
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/dashboard', DashboardController::class)
