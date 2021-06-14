@@ -24,7 +24,7 @@
             </template>
             <template v-else>
                 <div class="col-span-6 sm:col-span-4">
-                    <jet-input-error message="Twitch not connected" />
+                    <jet-input-error message="Twitch not connected"/>
                 </div>
             </template>
 
