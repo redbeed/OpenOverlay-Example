@@ -4956,7 +4956,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      followers: 0,
+      subscribers: 0,
       usernameSearch: '',
       fields: [{
         name: 'subscriber_username',
@@ -4998,7 +4998,7 @@ __webpack_require__.r(__webpack_exports__);
     onPaginationData: function onPaginationData(paginationData) {
       this.$refs.pagination.setPaginationData(paginationData);
       this.$refs.paginationInfo.setPaginationData(paginationData);
-      this.followers = paginationData.total;
+      this.subscribers = paginationData.total;
     },
     onChangePage: function onChangePage(page) {
       this.$refs.vuetable.changePage(page);
@@ -58061,7 +58061,7 @@ var render = function() {
                     staticClass:
                       "font-semibold text-xl text-gray-800 leading-tight"
                   },
-                  [_vm._v("\n                Follower\n            ")]
+                  [_vm._v("\n                Subscriber\n            ")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -58074,7 +58074,7 @@ var render = function() {
                         staticClass:
                           "flex whitespace-no-wrap uppercase px-3 font-bold text-gray-600 ml-auto mr-3 hover:underline",
                         attrs: {
-                          href: _vm.route("followers", {
+                          href: _vm.route("subscribers", {
                             connection: connection.id
                           })
                         }
@@ -58133,7 +58133,7 @@ var render = function() {
               _c("div", [
                 _vm._v(
                   "\n                " +
-                    _vm._s(this.followers) +
+                    _vm._s(this.subscribers) +
                     " Subscribers\n            "
                 )
               ])

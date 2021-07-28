@@ -3,12 +3,12 @@
         <template #header>
             <div class="flex items-center mr-0 ml-auto">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    Follower
+                    Subscriber
                 </h2>
                 <div class="flex items-center mr-0 ml-auto">
 
                     <a
-                        v-for="connection in connections.list" :href="route('followers', {connection: connection.id})"
+                        v-for="connection in connections.list" :href="route('subscribers', {connection: connection.id})"
                         class="flex whitespace-no-wrap uppercase px-3 font-bold text-gray-600 ml-auto mr-3 hover:underline">
                         {{ connection.service_username }}
                     </a>
@@ -23,7 +23,7 @@
                     class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium">
 
                 <div>
-                    {{ this.followers }} Subscribers
+                    {{ this.subscribers }} Subscribers
                 </div>
             </div>
             <vuetable
@@ -89,7 +89,7 @@ export default {
     },
     data() {
         return {
-            followers: 0,
+            subscribers: 0,
             usernameSearch: '',
             fields: [
                 {
@@ -139,7 +139,7 @@ export default {
             this.$refs.pagination.setPaginationData(paginationData);
             this.$refs.paginationInfo.setPaginationData(paginationData);
 
-            this.followers = paginationData.total;
+            this.subscribers = paginationData.total;
         },
 
         onChangePage(page) {
