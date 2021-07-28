@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ViewerList;
 
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -9,37 +9,26 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Redbeed\OpenOverlay\Models\Twitch\UserFollowers;
 
-class FollowerController extends Controller
+class FollowerController extends ViewerListController
 {
     public function __invoke(Request $request)
     {
-        /** @var User $user */
-        $user = Auth::user();
-        $connections = collect($user->connections)
-            ->keyBy('id');
+        $connectionsData = $this->getConnections($request);
 
-        $connectionId = $request->get('connection') ?? $connections->keys()->first();
-
-        if ($connections->count() > 0 && !$connections->get($connectionId)) {
+        if ($connectionsData['selected'] === null) {
             abort(404);
         }
 
         return Inertia::render('Follower/List', [
-            'user' => $user,
-            'connections' => [
-                'list' => $connections->toArray(),
-                'selected' => $connectionId
-            ],
+            'user' => Auth::user(),
+            'connections' => $connectionsData,
         ]);
     }
 
     public function listAction(Request $request): JsonResponse
     {
-        /** @var User $user */
-        $user = Auth::user();
-
-        $connectionId = $request->get('connection');
-        $connection = $user->connections()->where('id', $connectionId)->first();
+        $connectionsData = $this->getConnections($request);
+        $connection = $connectionsData['list']->get($connectionsData['selected']);
 
         if (empty($connection)) {
             abort(404);
