@@ -6348,7 +6348,7 @@ if (twitchUserId) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chris/Developer/redbeed/openOverlay/OpenOverlay-HelixxVR/resources/js/overlay.js */"./resources/js/overlay.js");
+module.exports = __webpack_require__(/*! /var/www/html/resources/js/overlay.js */"./resources/js/overlay.js");
 
 
 /***/ })

@@ -21,6 +21,10 @@
                             <jet-nav-link :href="route('bots')" :active="route().current('bots')">
                                 Bots
                             </jet-nav-link>
+
+                            <jet-nav-link :href="route('followers')" :active="route().current('followers')">
+                                Followers
+                            </jet-nav-link>
                         </div>
                     </div>
 

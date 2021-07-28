@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BotController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\OverlayExampleController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,16 @@ Route::get('/', function () {
 Route::get('bots')
     ->uses(BotController::class)
     ->name('bots');
+
+Route::prefix('followers')->group(function(){
+    Route::get('/')
+        ->uses(FollowerController::class)
+        ->name('followers');
+
+    Route::get('/list')
+        ->uses([FollowerController::class, 'listAction'])
+        ->name('followers.list');
+});
 
 Route::get('bots/add-to-chat/{botId}')
     ->uses([BotController::class, 'addBotToChat'])
