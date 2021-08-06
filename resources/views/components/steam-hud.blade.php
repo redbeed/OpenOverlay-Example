@@ -4,8 +4,8 @@
             <img src="{{ asset('/assets/open-overlay/openoverlay-icon.svg') }}" title="openoverlay-logo">
         </div>
         <div class="px-6 pb-3 pt-4 my-auto flex-grow">
-            <div id="steam-hud-title" class="text-{{ $mainColor }}-400 font-bold leading-snug">Latest Follower</div>
-            <div id="steam-hud-username" class="font-extrabold text-3xl leading-tight">moVRs</div>
+            <div id="steam-hud-title" class="text-{{ $mainColor }}-400 font-bold leading-snug">{{ $recent['title'] }}</div>
+            <div id="steam-hud-username" class="font-extrabold text-3xl leading-tight"> {{ $recent['name'] }} </div>
         </div>
         <div class="pl-6 pr-2 py-3 text-xl grid gap-1 flex-grow-0 flex-shrink-0 content-center">
             @foreach($socials as $icon)
