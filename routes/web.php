@@ -22,37 +22,43 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('bots')
-    ->uses(BotController::class)
-    ->name('bots');
+Route::middleware('auth')->group(function () {
 
-Route::prefix('followers')->group(function(){
-    Route::get('/')
-        ->uses(FollowerController::class)
-        ->name('followers');
+    Route::prefix('bots')->group(function () {
+        Route::get('/')
+            ->uses(BotController::class)
+            ->name('bots');
 
-    Route::get('/list')
-        ->uses([FollowerController::class, 'listAction'])
-        ->name('followers.list');
+        Route::get('add-to-chat/{botId}')
+            ->uses([BotController::class, 'addBotToChat'])
+            ->name('bots.add-to-chat');
+
+        Route::get('remove-from-chat/{botId}')
+            ->uses([BotController::class, 'removeBotFromChat'])
+            ->name('bots.remove-from-chat');
+    });
+
+    Route::prefix('followers')->group(function () {
+        Route::get('/')
+            ->uses(FollowerController::class)
+            ->name('followers');
+
+        Route::get('/list')
+            ->uses([FollowerController::class, 'listAction'])
+            ->name('followers.list');
+    });
+
+    Route::prefix('subscribers')->group(function () {
+        Route::get('/')
+            ->uses(SubscriberController::class)
+            ->name('subscribers');
+
+        Route::get('/list')
+            ->uses([SubscriberController::class, 'listAction'])
+            ->name('subscribers.list');
+    });
+
 });
-
-Route::prefix('subscribers')->group(function(){
-    Route::get('/')
-        ->uses(SubscriberController::class)
-        ->name('subscribers');
-
-    Route::get('/list')
-        ->uses([SubscriberController::class, 'listAction'])
-        ->name('subscribers.list');
-});
-
-Route::get('bots/add-to-chat/{botId}')
-    ->uses([BotController::class, 'addBotToChat'])
-    ->name('bots.add-to-chat');
-
-Route::get('bots/remove-from-chat/{botId}')
-    ->uses([BotController::class, 'removeBotFromChat'])
-    ->name('bots.remove-from-chat');
 
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/dashboard', DashboardController::class)

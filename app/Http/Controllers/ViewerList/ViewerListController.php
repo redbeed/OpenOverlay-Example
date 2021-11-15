@@ -5,10 +5,13 @@ namespace App\Http\Controllers\ViewerList;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use JetBrains\PhpStorm\ArrayShape;
 
 class ViewerListController
 {
-    protected function getConnections(Request $request): array {
+    #[ArrayShape(['list' => "\Illuminate\Support\Collection", 'selected' => "mixed|null"])]
+    protected function getConnections(Request $request): array
+    {
 
         /** @var User $user */
         $user = Auth::user();

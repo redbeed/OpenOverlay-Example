@@ -23,9 +23,6 @@ export default {
         },
         description: {
             type: String,
-        },
-        class: {
-            type: String,
         }
     },
 
@@ -36,7 +33,7 @@ export default {
 
             return [
                 'flex flex-col sm:flex-row items-center justify-items-center px-6 py-4 border-0 sm:rounded-lg relative mb-4',
-                backgroundColor, textColor, this.class
+                backgroundColor, textColor
             ];
         }
     }

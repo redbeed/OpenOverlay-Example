@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <img src="{{ asset('/assets/open-overlay/openoverlay-font.svg') }}" class="max-w-sm">
+            <img src="{{ asset('/assets/open-overlay/openoverlay-font.svg') }}" alt="OpenOverlay Logo" class="max-w-sm">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

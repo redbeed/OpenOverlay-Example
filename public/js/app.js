@@ -3146,16 +3146,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     description: {
       type: String
-    },
-    "class": {
-      type: String
     }
   },
   computed: {
     alertClass: function alertClass() {
       var backgroundColor = this.color !== 'white' ? "bg-".concat(this.color, "-800") : "bg-".concat(this.color);
       var textColor = this.color !== 'white' ? 'text-white' : 'text-black';
-      return ['flex flex-col sm:flex-row items-center justify-items-center px-6 py-4 border-0 sm:rounded-lg relative mb-4', backgroundColor, textColor, this["class"]];
+      return ['flex flex-col sm:flex-row items-center justify-items-center px-6 py-4 border-0 sm:rounded-lg relative mb-4', backgroundColor, textColor];
     }
   }
 });
@@ -3172,6 +3169,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _OpenOverlay_Alert__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/OpenOverlay/Alert */ "./resources/js/OpenOverlay/Alert.vue");
+//
 //
 //
 //
@@ -55158,7 +55156,11 @@ var render = function() {
                           target: "_blank"
                         }
                       },
-                      [_vm._v("\n                How to add\n            ")]
+                      [
+                        _vm._v(
+                          "\n                    How to add\n                "
+                        )
+                      ]
                     ),
                     _vm._v(" "),
                     _c(
@@ -55173,7 +55175,11 @@ var render = function() {
                           target: "_blank"
                         }
                       },
-                      [_vm._v("\n                Start Auth\n            ")]
+                      [
+                        _vm._v(
+                          "\n                    Start Auth\n                "
+                        )
+                      ]
                     )
                   ])
                 ]

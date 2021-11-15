@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\ShareInertiaData;
+use App\Providers\ForceHttpsServiceProvider;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel

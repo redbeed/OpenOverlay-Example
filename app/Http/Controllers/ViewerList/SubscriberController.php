@@ -9,16 +9,13 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Redbeed\OpenOverlay\Models\Twitch\UserFollowers;
 use Redbeed\OpenOverlay\Models\Twitch\UserSubscriber;
+use Symfony\Component\HttpFoundation\Response;
 
 class SubscriberController extends ViewerListController
 {
     public function __invoke(Request $request)
     {
         $connectionsData = $this->getConnections($request);
-
-        if ($connectionsData['selected'] === null) {
-            abort(404);
-        }
 
         return Inertia::render('Subscriber/List', [
             'user' => Auth::user(),
@@ -32,7 +29,7 @@ class SubscriberController extends ViewerListController
         $connection = $connectionsData['list']->get($connectionsData['selected']);
 
         if (empty($connection)) {
-            abort(404);
+            return response()->json([], Response::HTTP_ACCEPTED);
         }
 
         $perPage = $request->get('per_page', 50);
