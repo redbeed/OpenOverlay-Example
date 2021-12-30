@@ -1,7 +1,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-    purge: [
+    content: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
@@ -15,8 +16,10 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Roboto', 'Helvetica', ...defaultTheme.fontFamily.sans],
+                body: ['"Roboto Condensed"', 'Roboto', 'Helvetica', ...defaultTheme.fontFamily.sans],
             },
+
 
             colors: {
                 flamingo: {
@@ -143,9 +146,5 @@ module.exports = {
         },
     },
 
-    variants: {
-        opacity: ['responsive', 'hover', 'focus', 'disabled'],
-    },
-
-    plugins: [require('@tailwindcss/ui')],
+    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };

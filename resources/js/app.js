@@ -1,38 +1,20 @@
 require('./bootstrap');
 
-require('moment');
+import { createApp, h } from 'vue';
+import { createInertiaApp } from '@inertiajs/inertia-vue3';
+import { InertiaProgress } from '@inertiajs/progress';
 
-import Vue from 'vue';
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
-import { InertiaApp } from '@inertiajs/inertia-vue';
-import { InertiaForm } from 'laravel-jetstream';
-import PortalVue from 'portal-vue';
-import Echo from "laravel-echo";
-
-
-Vue.mixin({ methods: { route } });
-Vue.use(InertiaApp);
-Vue.use(InertiaForm);
-Vue.use(PortalVue);
-
-const app = document.getElementById('app');
-
-new Vue({
-    render: (h) =>
-        h(InertiaApp, {
-            props: {
-                initialPage: JSON.parse(app.dataset.page),
-                resolveComponent: (name) => require(`./Pages/${name}`).default,
-            },
-        }),
-}).$mount(app);
-
-window.Pusher = require('pusher-js');
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: 'your-openoverlay-pusher-key',
-    wsHost: window.location.hostname,
-    wsPort: 6001,
-    forceTLS: false,
-    disableStats: true,
+createInertiaApp({
+    title: (title) => `${title} - ${appName}`,
+    resolve: (name) => require(`./Pages/${name}.vue`),
+    setup({ el, app, props, plugin }) {
+        return createApp({ render: () => h(app, props) })
+            .use(plugin)
+            .mixin({ methods: { route } })
+            .mount(el);
+    },
 });
+
+InertiaProgress.init({ color: '#4B5563' });
