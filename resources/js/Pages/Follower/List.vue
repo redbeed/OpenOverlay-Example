@@ -1,21 +1,5 @@
 <template>
     <app-layout>
-        <template #header>
-            <div class="flex items-center mr-0 ml-auto">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    Follower
-                </h2>
-                <div class="flex items-center mr-0 ml-auto">
-
-                    <a
-                        v-for="connection in connections.list" :href="route('followers', {connection: connection.id})"
-                        class="flex whitespace-no-wrap uppercase px-3 font-bold text-gray-600 ml-auto mr-3 hover:underline">
-                        {{ connection.service_username }}
-                    </a>
-                </div>
-            </div>
-        </template>
-
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="py-3 flex items-center justify-between ">
                 <input
@@ -26,36 +10,31 @@
                     {{ this.followers }} Followers
                 </div>
             </div>
-            <vuetable
-                ref="vuetable"
-                :fields="fields"
-                :css="tableStyling.table"
-                :api-url="route('followers.list', {connection: connections.selected, query: this.usernameSearch})"
-                :per-page="50"
-                :first-page="1"
-                data-path="data"
-                pagination-path=""
-                @vuetable:pagination-data="onPaginationData"
-            >
 
-                <div slot="actions" slot-scope="props">
-                    <jet-link :href="`https://twitch.tv/${props.rowData.follower_username}`" target="_blank">
+            <vue-table-lite
+                :is-slot-mode="true"
+                :is-loading="isLoading"
+                :columns="columns"
+                :rows="rows"
+                :total="followers"
+                :page-size="perPage"
+                @do-search="loadFollowers"
+                @is-finished="isLoading = false"
+            >
+                <template v-slot:actions="data">
+                    <jet-link :href="`https://twitch.tv/${data.value.follower_username}`" target="_blank">
                         Profile
                     </jet-link>
-                </div>
+                </template>
 
-            </vuetable>
+                <template v-slot:followed_at="data">
+                    {{ date(data.value.followed_at) }}
+                </template>
 
-            <div class="py-3 flex items-center justify-between border-t border-gray-200">
-
-                <div class="flex-1 flex items-center justify-between">
-                    <vuetable-pagination-info ref="paginationInfo"></vuetable-pagination-info>
-
-                    <vuetable-pagination
-                        ref="pagination" :css="tableStyling.pagination"
-                        @vuetable-pagination:change-page="onChangePage"></vuetable-pagination>
-                </div>
-            </div>
+                <template v-slot:followed_at_human="data">
+                    {{ fromNow(data.value.followed_at) }}
+                </template>
+            </vue-table-lite>
         </div>
 
     </app-layout>
@@ -69,17 +48,18 @@ import JetLink from "@/Jetstream/Link";
 import JetFormSection from "@/Jetstream/FormSection";
 import JetInputError from "@/Jetstream/InputError";
 import moment from 'moment';
-import Vuetable from 'vuetable-2';
-import VuetablePagination from "vuetable-2/src/components/VuetablePagination";
-import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo';
 import TableStyling from "@/Pages/Follower/TableStyling";
 import JetNavLink from '@/Jetstream/NavLink';
-import debounce from "@/debounce";
+import debounce from "lodash/debounce"
 import JetButton from "@/Jetstream/Button";
 import JetDangerButton from "@/Jetstream/DangerButton";
+import VueTableLite from 'vue3-table-lite';
+import {defineComponent, reactive, ref} from "vue";
 
-export default {
-    name: "List",
+export default defineComponent({
+    mounted() {
+        this.loadFollowers(0, this.perPage, 'follower_username', 'asc');
+    },
 
     props: {
         connections: {
@@ -87,55 +67,70 @@ export default {
             selected: Number,
         },
     },
-    data() {
+
+    setup() {
+        const isLoading = ref(true);
+        const perPage = ref(15);
+        const followers = ref(0);
+        const usernameSearch = ref('');
+        const rows = ref([]);
+        const columns = reactive([
+            {
+                field: 'follower_username',
+                sortField: 'follower_username',
+                label: 'Username',
+                sortable: true,
+            },
+            {
+                field: 'followed_at',
+                sortField: 'followed_at',
+                label: 'Follower since',
+                sortable: true
+            },
+            {
+                field: 'followed_at_human',
+                label: ''
+            },
+            {
+                field: 'actions',
+                label: '',
+            }
+        ]);
+
         return {
-            followers: 0,
-            usernameSearch: '',
-            fields: [
-                {
-                    name: 'follower_username',
-                    sortField: 'follower_username',
-                    title: 'Username',
-                    titleClass: 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider',
-                    dataClass: 'px-6 py-4 whitespace-nowrap',
-                },
-                {
-                    name: 'followed_at',
-                    sortField: 'followed_at',
-                    title: 'Follower since',
-                    titleClass: 'pl-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider',
-                    dataClass: 'pl-6 py-4 whitespace-nowrap',
-                    formatter(date) {
-                        return moment(date).format('MMMM Do YYYY, h:mm:ss a');
-                    }
-                },
-                {
-                    name: 'followed_at',
-                    title: '',
-                    dataClass: 'pr-6 py-4 whitespace-nowrap',
-                    formatter(date) {
-                        return moment(date).fromNow();
-                    }
-                },
-                {
-                    name: 'actions',
-                    title: '',
-                }
-            ],
+            isLoading, perPage, followers,
+            usernameSearch, rows, columns,
         };
     },
 
     methods: {
-        onPaginationData(paginationData) {
-            this.$refs.pagination.setPaginationData(paginationData);
-            this.$refs.paginationInfo.setPaginationData(paginationData);
+        loadFollowers(offset, limit, sort, order) {
+            this.isLoading = true;
 
-            this.followers = paginationData.total;
+            let url = route('followers.list', {
+                connection: this.connections.selected,
+                query: this.usernameSearch,
+                per_page: limit,
+                page: (1 + (offset / limit)),
+                sort_by: sort,
+                sort_order: order,
+            });
+
+            axios.get(url)
+                .then((response) => {
+                    this.rows = response.data.data;
+                    this.followers = response.data.total;
+
+                });
         },
-        onChangePage(page) {
-            this.$refs.vuetable.changePage(page);
-            console.log(page);
-        }
+
+        date(date) {
+            return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+        },
+
+        fromNow(date) {
+            return moment(date).fromNow();
+        },
     },
 
     filters: {
@@ -155,11 +150,14 @@ export default {
     },
 
     watch: {
-        usernameSearch() {
-            debounce(() => {
-                this.$refs.vuetable.reload();
-            }, 350);
-        }
+        usernameSearch: debounce(function () {
+            this.loadFollowers(
+                0,
+                this.perPage,
+                'follower_username',
+                'asc'
+            );
+        }, 350)
     },
 
     components: {
@@ -169,12 +167,10 @@ export default {
         JetFormSection,
         JetLabel,
         JetInputError,
-        Vuetable,
-        VuetablePagination,
-        VuetablePaginationInfo,
+        VueTableLite,
         JetNavLink,
         JetButton,
         JetDangerButton,
     },
-}
+});
 </script>

@@ -1,31 +1,23 @@
 <template>
     <app-layout>
-        <template #header>
-            <div class="flex items-center mr-0 ml-auto">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    Bots
-                </h2>
-                <div class="flex items-center mr-0 ml-auto">
-                    <a href="https://www.openoverlay.dev/docs/bot/add_chat_schedule" target="_blank"
-                       class="flex whitespace-no-wrap uppercase px-3 font-bold text-gray-600 ml-auto mr-3 hover:underline">
-                        Add Schedudle Message
-                    </a>
-                    <div class="flex items-center mr-0 ml-0">
-                        <a href="https://www.openoverlay.dev/docs/bot/add_chat_command" target="_blank"
-                           class="flex whitespace-no-wrap uppercase px-3 font-bold text-gray-600 ml-auto mr-0 hover:underline">
-                            Add Command
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </template>
-
         <div v-if="$page.message" class="container mx-auto max-w-7xl mx-auto sm:px-6 lg:px-8 my-12">
             <alert :title="$page.message" color="purple"></alert>
         </div>
 
         <div class="container mx-auto max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div v-for="bot in this.availableBots" class="my-12">
+            <div class="flex w-full justify-end align-items-end mt-12">
+                <jet-button-link href="https://www.openoverlay.dev/docs/bot/add_chat_schedule"
+                                 target="_blank" class="mr-5">
+                    Add Schedule Message
+                </jet-button-link>
+
+                <jet-button-link href="https://www.openoverlay.dev/docs/bot/add_chat_command"
+                                 target="_blank">
+                    Add Command
+                </jet-button-link>
+            </div>
+
+            <div v-for="bot in this.availableBots" class="mt-10">
                 <alert :title="bot.bot_username" color="white" class="shadow">
 
                     <template v-slot:description>
@@ -82,6 +74,8 @@
 import AppLayout from '@/Layouts/AppLayout'
 import Alert from "@/OpenOverlay/Alert";
 import JetLabel from '@/Jetstream/Label';
+import JetButton from '@/Jetstream/Button';
+import JetButtonLink from '@/Jetstream/ButtonLink'
 
 export default {
     name: "BotList",
@@ -95,6 +89,8 @@ export default {
         Alert,
         AppLayout,
         JetLabel,
+        JetButton,
+        JetButtonLink,
     },
 }
 </script>

@@ -34,8 +34,8 @@ class FollowerController extends ViewerListController
         $perPage = $request->get('per_page', 50);
         $query = $request->get('query');
 
-        $sortSting = $request->get('sort');
-        [$sort, $sortDirection] = explode('|', $sortSting ?? 'follower_username|asc');
+        $sort = $request->get('sort_by', 'follower_username');
+        $sortDirection = $request->get('sort_order', 'asc');
 
         $followersQuery = UserFollowers::where('twitch_user_id', $connection->service_user_id)
             ->orderBy($sort, $sortDirection);
