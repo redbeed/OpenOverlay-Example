@@ -10,16 +10,16 @@
 
         <template #form>
 
-            <template v-if="$page.twitchUser">
+            <template v-if="$page.props.twitchUser">
                 <!-- Username -->
                 <div class="col-span-6 sm:col-span-4">
                     <jet-label value="Twitch Username"/>
-                    {{ $page.twitchUser.service_username }}
+                    {{ $page.props.twitchUser.service_username }}
                 </div>
 
                 <div class="col-span-6 sm:col-span-4">
                     <jet-label value="Twitch User ID"/>
-                    {{ $page.twitchUser.service_user_id }}
+                    {{ $page.props.twitchUser.service_user_id }}
                 </div>
             </template>
             <template v-else>

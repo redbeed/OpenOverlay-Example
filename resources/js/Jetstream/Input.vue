@@ -1,12 +1,18 @@
 <template>
-    <input class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded-xl text-gray-600 focus:border-flamingo-200 focus:ring focus:ring-flamingo-100 focus:ring-opacity-50" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" ref="input">
+    <input :class="`w-full ${ this.backgroundColor } p-4 text-sm border border-gray-200 rounded-xl text-gray-600 focus:outline-none focus:border-flamingo-200 focus:ring focus:ring-flamingo-100 focus:ring-opacity-50`" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" ref="input">
 </template>
 
 <script>
     import { defineComponent } from 'vue'
 
     export default defineComponent({
-        props: ['modelValue'],
+        props: {
+            modelValue: String,
+            backgroundColor: {
+                type: String,
+                default: 'bg-gray-50',
+            },
+        },
 
         emits: ['update:modelValue'],
 

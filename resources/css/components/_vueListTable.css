@@ -1,0 +1,17 @@
+.vue-table-lite div.card {
+    background: transparent;
+    padding: 0;
+}
+
+.vue-table-lite div.card .row {
+    margin: 0;
+}
+
+.vue-table-lite div.card .row .table {
+    @apply rounded-xl overflow-hidden;
+    @apply bg-white;
+}
+
+.vue-table-lite div.card .row .table tr:nth-child(2n+2) {
+    @apply bg-gray-100;
+}
