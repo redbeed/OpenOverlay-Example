@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use Redbeed\OpenOverlay\Console\Commands\ChatBot\RestartServerCommand;
 use Redbeed\OpenOverlay\Models\BotConnection;
 
 class BotController extends Controller
@@ -48,6 +50,9 @@ class BotController extends Controller
 
         $user->bots()->attach($bot);
 
+        // Restart Bot
+        Artisan::call(RestartServerCommand::class);
+
         return redirect()->route('bots')
             ->with('message', 'Please restart your Bot Sail Container');
     }
@@ -64,6 +69,9 @@ class BotController extends Controller
         }
 
         $user->bots()->wherePivot('bot_id', $bot->id)->detach();
+
+        // Restart Bot
+        Artisan::call(RestartServerCommand::class);
 
         return redirect()->route('bots')
             ->with('message', 'Please restart your Bot Sail Container');

@@ -9410,10 +9410,6 @@ select{
     margin-top: 0px;
   }
 
-  .md\:inline-flex{
-    display: inline-flex;
-  }
-
   .md\:grid{
     display: grid;
   }

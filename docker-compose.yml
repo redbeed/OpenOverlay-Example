@@ -69,7 +69,7 @@ services:
             args:
                 WWWGROUP: '${WWWGROUP}'
         image: sail-8.0/app
-        command: [ "sh", "-c", "php artisan overlay:chatbot" ]
+        command: [ "sh", "-c", "php artisan overlay:chatbot:serve" ]
         restart: unless-stopped
         environment:
             WWWUSER: '${WWWUSER}'
