@@ -37,7 +37,6 @@ import JetLabel from '@/Jetstream/Label';
 import JetLink from "@/Jetstream/Link";
 import JetFormSection from "@/Jetstream/FormSection";
 import JetInputError from "@/Jetstream/InputError";
-import moment from 'moment';
 import JetNavLink from '@/Jetstream/NavLink';
 import debounce from "lodash/debounce"
 import JetButton from "@/Jetstream/Button";

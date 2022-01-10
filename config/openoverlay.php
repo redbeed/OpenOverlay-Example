@@ -20,8 +20,8 @@ return [
              * OpenOverlay automatically transfer twitch users data into the database
              * Here you can enable and disable different data endpoints
              */
-            'save' => [
-                'follower' => true,
+            'save'   => [
+                'follower'   => true,
                 'subscriber' => true,
             ],
         ],
@@ -35,7 +35,7 @@ return [
              * If you need to generate a new "app_token.token", you need to set "regenerate" to true
              */
             'app_token' => [
-                'token' => env('OVERLAY_TWITCH_APP_TOKEN'),
+                'token'      => env('OVERLAY_TWITCH_APP_TOKEN'),
                 'regenerate' => true,
             ],
 
@@ -43,7 +43,7 @@ return [
              * Your personal and unique secret is used to validate a twitch callback
              * If you change your secret all previous configures webhook callbacks will be end as invalid
              */
-            'secret' => env('OVERLAY_SECRET'),
+            'secret'    => env('OVERLAY_SECRET'),
 
             /**
              * You can subscribe different endpoints/changes on twitch side.
@@ -54,6 +54,14 @@ return [
                 'channel.update', 'channel.follow',
                 'channel.subscribe', 'channel.cheer',
             ],
+        ],
+    ],
+
+    'bot' => [
+        'commands' => [
+            'advanced' => [
+                \App\Bot\Commands\DatabaseCommands::class,
+            ]
         ],
     ],
 ];

@@ -11,9 +11,8 @@
                     Add Schedule Message
                 </jet-button-link>
 
-                <jet-button-link href="https://www.openoverlay.dev/docs/bot/add_chat_command"
-                                 target="_blank">
-                    Add Command
+                <jet-button-link :href="route('bot.chat-command')">
+                    Commands
                 </jet-button-link>
             </div>
 

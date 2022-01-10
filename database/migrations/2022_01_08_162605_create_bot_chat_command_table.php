@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTeamInvitationsTable extends Migration
+class CreateBotChatCommandTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateTeamInvitationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('team_invitations', function (Blueprint $table) {
+        Schema::create('bot_chat_command', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('team_id')->constrained()->cascadeOnDelete();
-            $table->string('email')->unique();
-            $table->string('role')->nullable();
+            $table->string('command')->unique();
+            $table->text('response');
+
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateTeamInvitationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('team_invitations');
+        Schema::dropIfExists('bot_command');
     }
 }
