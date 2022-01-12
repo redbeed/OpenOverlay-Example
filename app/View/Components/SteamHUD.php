@@ -8,15 +8,13 @@ use Redbeed\OpenOverlay\Models\Twitch\UserSubscriber;
 
 class SteamHUD extends Component
 {
-
-    /** @var array */
-    private $twitchUserId;
+    public string $twitchUserId;
 
     /** @var string[] */
-    private $socials = [];
+    public array $socials = [];
 
-    /** @var string */
-    private $mainColor;
+    public string $mainColor;
+    public array $recent;
 
     public function __construct(string $twitchUserId, array $socialIcons = [], string $mainColor = 'flamingo')
     {
@@ -25,7 +23,7 @@ class SteamHUD extends Component
         $this->mainColor = $mainColor;
     }
 
-    protected function latestEvent(): array
+    protected function latestEvent()
     {
         $follower = UserFollowers::where('twitch_user_id', $this->twitchUserId)
             ->orderBy('followed_at', 'DESC')
@@ -35,19 +33,17 @@ class SteamHUD extends Component
             ->orderBy('created_at', 'DESC')
             ->first();
 
-        $recent = [
+        $this->recent = [
             'title' => 'Latest Follower',
-            'name' => $follower['follower_username'] || 'OpenOverlay',
+            'name' => $follower['follower_username']?: 'OpenOverlay',
         ];
 
         if ($follower && $subscriber && $follower['created_at'] > $subscriber['created_at']) {
-            $recent = [
+            $this->recent = [
                 'title' => 'Latest Subscriber',
                 'name' => $subscriber['subscriber_username'],
             ];
         }
-
-        return $recent;
     }
 
     /**
@@ -57,10 +53,8 @@ class SteamHUD extends Component
      */
     public function render()
     {
-        return view('components.steam-hud', [
-            'recent' => $this->latestEvent(),
-            'socials' => $this->socials,
-            'mainColor' => $this->mainColor,
-        ]);
+        $this->latestEvent();
+
+        return view('components.steam-hud');
     }
 }
