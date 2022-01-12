@@ -6,10 +6,10 @@
             <img src="{{ asset('assets/overlay/population-one.png') }}" class="h-full w-auto">
         @endif
 
-        <x-steam-hud :twitchUserId="$twitchUserId"
+        <x-steam-HUD :twitchUserId="$twitchUserId"
                      :socialIcons="['fab fa-twitter', 'fab fa-youtube']"
                      :mainColor="'flamingo'">
 
-        </x-steam-hud>
+        </x-steam-HUD>
     </div>
 @endsection
