@@ -12,8 +12,9 @@ return [
              */
             'scopes' => [
                 'user:read:email', 'user:read:broadcast',
-                'channel:read:subscriptions', 'channel:read:subscriptions',
+                'channel:read:subscriptions', 'channel:read:subscriptions', 'channel:read:redemptions',
                 'bits:read',
+                'chat:edit', 'chat:read'
             ],
 
             /**
@@ -25,6 +26,20 @@ return [
                 'subscriber' => true,
             ],
         ],
+    ],
+
+    'modules' => [
+        /**
+         * Auto shout out after a raid.
+         * You can use :username, :twitchUrl and :gameName for your message.
+         */
+        \Redbeed\OpenOverlay\Listeners\AutoShoutOutRaid::class => [
+            'message' => 'Follow :username over at :twitchUrl. They were last playing :gameName'
+        ],
+
+        \Redbeed\OpenOverlay\Support\ViewerInChat::class => [
+            'reset' => -1
+        ]
     ],
 
     'webhook' => [
@@ -53,15 +68,28 @@ return [
                 'stream.online', 'stream.offline',
                 'channel.update', 'channel.follow',
                 'channel.subscribe', 'channel.cheer',
+                'channel.channel_points_custom_reward_redemption.add',
+                'channel.raid',
             ],
         ],
     ],
 
     'bot' => [
         'commands' => [
+
+            'simple' => [
+                '!hello' => 'Hello %username%! How are you doing?',
+            ],
+
             'advanced' => [
+                \Redbeed\OpenOverlay\ChatBot\Commands\ShoutOutBotCommand::class,
+
                 \App\Bot\Commands\DatabaseCommands::class,
             ]
         ],
-    ],
+
+        'schedules' => [
+            \Redbeed\OpenOverlay\Console\Scheduling\MadeWithChatBotScheduling::class,
+        ]
+    ]
 ];
