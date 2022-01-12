@@ -35,13 +35,13 @@ class SteamHUD extends Component
 
         $this->recent = [
             'title' => 'Latest Follower',
-            'name' => $follower['follower_username']?: 'OpenOverlay',
+            'name'  => $follower['follower_username'] ?: 'OpenOverlay',
         ];
 
         if ($follower && $subscriber && $follower['created_at'] > $subscriber['created_at']) {
             $this->recent = [
                 'title' => 'Latest Subscriber',
-                'name' => $subscriber['subscriber_username'],
+                'name'  => $subscriber['subscriber_username'],
             ];
         }
     }
@@ -55,6 +55,6 @@ class SteamHUD extends Component
     {
         $this->latestEvent();
 
-        return view('components.steam-hud');
+        return view('components.overlay.steam-hud');
     }
 }
