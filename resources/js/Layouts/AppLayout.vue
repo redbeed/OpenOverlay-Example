@@ -7,34 +7,12 @@
         <div class="min-h-screen bg-gray-50">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="px-3">
                     <div class="flex justify-between h-16">
-                        <div class="flex">
-                            <!-- Logo -->
-                            <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
-                                    <jet-application-mark class="block h-9 w-auto" />
-                                </Link>
-                            </div>
-
-                            <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
-                                </jet-nav-link>
-
-                                <jet-nav-link :href="route('bots')" :active="route().current('bots')">
-                                    Bots
-                                </jet-nav-link>
-
-                                <jet-nav-link :href="route('followers')" :active="route().current('followers')">
-                                    Followers
-                                </jet-nav-link>
-
-                                <jet-nav-link :href="route('subscribers')" :active="route().current('subscribers')">
-                                    Subscriber
-                                </jet-nav-link>
-                            </div>
+                        <div class="flex items-center ml-2">
+                            <Link :href="route('dashboard')">
+                                <jet-application-logo class="block h-9 w-auto" />
+                            </Link>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -242,7 +220,28 @@
 
             <!-- Page Content -->
             <main>
-                <slot></slot>
+                <div class="hidden lg:block lg:absolute left-0 bottom-0 lg:top-[56px] lg:bottom-auto w-60 px-3 py-5">
+                    <!-- Sitebar Links -->
+                    <div class="sm:flex flex-col gap-y-4">
+
+                        <div class="w-full" v-for="menuItem in this.menuItems">
+                            <jet-nav-link :href="route(menuItem.url)" :active="route().current(menuItem.url)">
+                                <i class="fa-solid fa-fw mr-3" :class="menuItem.icon || ''"></i>{{ menuItem.name }}
+                            </jet-nav-link>
+
+                            <div class="sm:flex flex-col gap-y-2 mt-2" v-if="menuItem.child">
+                                <jet-nav-link
+                                    v-for="childItem in menuItem.child"
+                                    :href="route(childItem.url)"  :active="route().current(childItem.url)">
+                                    <i class="fa-solid fa-fw mr-3" :class="childItem.icon || ''"></i>{{ childItem.name }}
+                                </jet-nav-link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 md:py-8 md:px-12 lg:ml-60">
+                    <slot></slot>
+                </div>
             </main>
         </div>
     </div>
@@ -250,7 +249,7 @@
 
 <script>
     import { defineComponent } from 'vue'
-    import JetApplicationMark from '@/Jetstream/ApplicationMark.vue'
+    import JetApplicationLogo from '@/Jetstream/ApplicationLogo.vue'
     import JetBanner from '@/Jetstream/Banner.vue'
     import JetDropdown from '@/Jetstream/Dropdown.vue'
     import JetDropdownLink from '@/Jetstream/DropdownLink.vue'
@@ -265,7 +264,7 @@
 
         components: {
             Head,
-            JetApplicationMark,
+            JetApplicationLogo,
             JetBanner,
             JetDropdown,
             JetDropdownLink,
@@ -277,6 +276,34 @@
         data() {
             return {
                 showingNavigationDropdown: false,
+                menuItems: [
+                    {
+                        name: 'Dashboard',
+                        icon: 'fa-grip',
+                        url: 'dashboard',
+                        child: [
+                            {
+                                name: 'Followers',
+                                url: 'followers',
+                            },
+                            {
+                                name: 'Subscribers',
+                                url: 'subscribers',
+                            },
+                        ],
+                    },
+                    {
+                        name: 'Bots',
+                        icon: 'fa-robot',
+                        url: 'bots',
+                        child: [
+                            {
+                                name: 'Commands',
+                                url: 'bot.chat-command',
+                            },
+                        ],
+                    },
+                ],
             }
         },
 

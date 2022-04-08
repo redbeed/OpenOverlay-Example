@@ -118,8 +118,6 @@ export default defineComponent({
                 }
             }
 
-            console.log(columns);
-
             return columns;
         },
     },

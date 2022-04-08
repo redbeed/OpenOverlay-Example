@@ -1,7 +1,7 @@
 # For more information: https://laravel.com/docs/sail
 version: '3'
 services:
-    laravel.app:
+    openoverlay.app:
         build:
             context: ./vendor/laravel/sail/runtimes/8.1
             dockerfile: Dockerfile
@@ -20,35 +20,38 @@ services:
         volumes:
             - '.:/var/www/html'
         networks:
-            - sail
+            - openoverlay
         depends_on:
-            - pgsql
-    pgsql:
-        image: 'postgres:13'
+            - openoverlay.database
+            - openoverlay.websocket
+    openoverlay.database:
+        image: 'mariadb:10.3'
         ports:
-            - '${FORWARD_DB_PORT:-5432}:5432'
+            - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
-            PGPASSWORD: '${DB_PASSWORD:-secret}'
-            POSTGRES_DB: '${DB_DATABASE}'
-            POSTGRES_USER: '${DB_USERNAME}'
-            POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ROOT_HOST: "%"
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USER: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
         volumes:
-            - 'sailpgsql:/var/lib/postgresql/data'
+            - 'openoverlay_database:/var/lib/mysql'
         networks:
-            - sail
+            - openoverlay
         healthcheck:
-            test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}"]
+            test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
             retries: 3
             timeout: 5s
-    redis:
+    openoverlay.redis:
         image: 'redis:alpine'
         ports:
             - '${FORWARD_REDIS_PORT:-6379}:6379'
         volumes:
-            - 'sailredis:/data'
+            - 'openoverlay_redis:/data'
         networks:
-            - sail
-    laravel.websocket:
+            - openoverlay
+    openoverlay.websocket:
         build:
             context: ./vendor/laravel/sail/runtimes/8.0
             dockerfile: Dockerfile
@@ -65,10 +68,10 @@ services:
         volumes:
             - '.:/var/www/html'
         networks:
-            - sail
+            - openoverlay
         depends_on:
-            - laravel.app
-    laravel.chatbot:
+            - openoverlay.database
+    openoverlay.chatbot:
         build:
             context: ./vendor/laravel/sail/runtimes/8.0
             dockerfile: Dockerfile
@@ -83,14 +86,14 @@ services:
         volumes:
             - '.:/var/www/html'
         networks:
-            - sail
+            - openoverlay
         depends_on:
-            - laravel.app
+            - openoverlay.database
 networks:
-    sail:
+    openoverlay:
         driver: bridge
 volumes:
-    sailpgsql:
+    openoverlay_database:
         driver: local
-    sailredis:
+    openoverlay_redis:
         driver: local

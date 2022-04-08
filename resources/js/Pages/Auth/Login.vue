@@ -1,58 +1,58 @@
 <template>
     <Head title="Log in"/>
 
-    <div class="bg-gray-50 min-h-screen">
-        <nav class="z-10 inset-0 flex justify-center h-20 bg-white">
-            <div class="flex items-center justify-center px-5 w-full max-w-nav">
-                <jet-authentication-card-logo/>
+    <jet-authentication-card>
+        <template #logo>
+            <jet-authentication-card-logo />
+        </template>
+
+        <div class="mb-4">
+            <p class="text-flamingo-800 font-bold">Sign In</p>
+            <h2 class="text-xl font-bold">Start manage your Overlay</h2>
+        </div>
+
+        <jet-validation-errors class="mb-4"/>
+
+        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+            {{ status }}
+        </div>
+
+        <form @submit.prevent="submit">
+            <div>
+                <jet-label for="email" value="Email" class="hidden"/>
+                <jet-input id="email" placeholder="Email" type="email" class="mt-1 block w-full"
+                           v-model="form.email" required autofocus/>
             </div>
-        </nav>
 
-        <jet-authentication-card class="min-h-0 pt-0 sm:mt-10 bg-gray-50">
-            <div class="mb-4">
-                <p class="text-flamingo-800 font-bold">Sign In</p>
-                <h2 class="text-xl font-bold">Start manage your Overlay</h2>
+            <div class="mt-4">
+                <jet-label for="password" value="Password" class="hidden"/>
+                <jet-input id="password" placeholder="Password" type="password" class="mt-1 block w-full" v-model="form.password" required
+                           autocomplete="current-password"/>
             </div>
 
-            <jet-validation-errors class="mb-4"/>
+            <div class="flex items-center justify-between mt-4">
+                <Link v-if="canResetPassword" :href="route('password.request')"
+                      class="underline text-sm text-gray-600 hover:text-gray-900">
+                    Forgot password?
+                </Link>
 
-            <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-                {{ status }}
+                <label class="flex items-center ml-4">
+                    <jet-checkbox name="remember" v-model:checked="form.remember"/>
+                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                </label>
             </div>
 
-            <form @submit.prevent="submit">
-                <div>
-                    <jet-label for="email" value="Email" class="hidden"/>
-                    <jet-input id="email" placeholder="Email" type="email" class="mt-1 block w-full"
-                               v-model="form.email" required autofocus/>
-                </div>
+            <div class="flex items-center justify-end mt-4">
+                <Link :href="route('register')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                    Need a new account?
+                </Link>
 
-                <div class="mt-4">
-                    <jet-label for="password" value="Password" class="hidden"/>
-                    <jet-input id="password" placeholder="Password" type="password" class="mt-1 block w-full" v-model="form.password" required
-                               autocomplete="current-password"/>
-                </div>
-
-                <div class="block mt-4">
-                    <jet-button class="w-full justify-center" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                        Log in
-                    </jet-button>
-                </div>
-
-                <div class="flex items-center justify-between mt-4">
-                    <label class="flex items-center">
-                        <jet-checkbox name="remember" v-model:checked="form.remember"/>
-                        <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                    </label>
-
-                    <Link v-if="canResetPassword" :href="route('password.request')"
-                          class="underline text-sm text-gray-600 hover:text-gray-900 ml-4">
-                        Forgot password?
-                    </Link>
-                </div>
-            </form>
-        </jet-authentication-card>
-    </div>
+                <jet-button class="justify-center ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Log in
+                </jet-button>
+            </div>
+        </form>
+    </jet-authentication-card>
 </template>
 
 <script>
