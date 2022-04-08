@@ -5,7 +5,7 @@
         </div>
 
         <div class="container mx-auto max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="flex w-full justify-end align-items-end mt-12">
+            <div class="flex w-full justify-end align-items-end">
                 <jet-button-link href="https://www.openoverlay.dev/docs/bot/add_chat_schedule"
                                  target="_blank" class="mr-5">
                     Add Schedule Message

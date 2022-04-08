@@ -2,28 +2,15 @@
 
 namespace App\Http\Controllers\ViewerList;
 
-use App\Models\User;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Inertia\Inertia;
-use Redbeed\OpenOverlay\Models\Twitch\UserFollowers;
 use Redbeed\OpenOverlay\Models\Twitch\UserSubscriber;
 use Symfony\Component\HttpFoundation\Response;
 
 class SubscriberController extends ViewerListController
 {
-    public function __invoke(Request $request)
-    {
-        $connectionsData = $this->getConnections($request);
+   protected string $listTemplate = 'Subscriber/List';
 
-        return Inertia::render('Subscriber/List', [
-            'user' => Auth::user(),
-            'connections' => $connectionsData,
-        ]);
-    }
-
-    public function listAction(Request $request): JsonResponse
+    public function listUsers(Request $request)
     {
         $connectionsData = $this->getConnections($request);
         $connection = $connectionsData['list']->get($connectionsData['selected']);

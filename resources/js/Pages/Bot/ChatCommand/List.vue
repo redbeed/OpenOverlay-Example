@@ -1,7 +1,7 @@
 <template>
     <app-layout title="Add Bot Chat Command">
 
-        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="py-3 flex items-center justify-end">
                 <div>
                     <button-link class="bg-flamingo-700"

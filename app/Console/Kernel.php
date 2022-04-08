@@ -5,6 +5,7 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Redbeed\OpenOverlay\Console\Commands\ChatBot\RestartServerCommand;
+use Redbeed\OpenOverlay\Console\Commands\Twitch\RefresherCommand as TwitchRefresherCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -25,7 +26,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // refresh twitch streamers data (follow, subscriber, etc.)
+        $schedule->command(TwitchRefresherCommand::class)->daily();
     }
 
     /**

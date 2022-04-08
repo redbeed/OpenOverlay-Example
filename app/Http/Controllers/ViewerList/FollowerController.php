@@ -2,27 +2,16 @@
 
 namespace App\Http\Controllers\ViewerList;
 
-use App\Models\User;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Inertia\Inertia;
 use Redbeed\OpenOverlay\Models\Twitch\UserFollowers;
 use Symfony\Component\HttpFoundation\Response;
 
 class FollowerController extends ViewerListController
 {
-    public function __invoke(Request $request)
-    {
-        $connectionsData = $this->getConnections($request);
 
-        return Inertia::render('Follower/List', [
-            'user' => Auth::user(),
-            'connections' => $connectionsData,
-        ]);
-    }
+    protected string $listTemplate = 'Follower/List';
 
-    public function listAction(Request $request): JsonResponse
+    public function listUsers(Request $request)
     {
         $connectionsData = $this->getConnections($request);
         $connection = $connectionsData['list']->get($connectionsData['selected']);
@@ -44,6 +33,6 @@ class FollowerController extends ViewerListController
             $followersQuery = $followersQuery->where('follower_username', 'LIKE', '%'.$query.'%');
         }
 
-        return response()->json($followersQuery->paginate($perPage));
+        return $followersQuery->paginate($perPage);
     }
 }

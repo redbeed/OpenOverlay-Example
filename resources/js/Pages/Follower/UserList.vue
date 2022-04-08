@@ -1,6 +1,6 @@
 <template>
-    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-        <div class="py-3 flex items-center justify-between ">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="mb-4 flex items-center justify-between ">
             <div class="w-1/2 max-w-xs">
                 <jet-input v-model="usernameSearch" placeholder="Username.." background-color="bg-white"></jet-input>
             </div>
@@ -44,6 +44,7 @@ import JetInput from "@/Jetstream/Input";
 import JetDangerButton from "@/Jetstream/DangerButton";
 import VueTableLite from 'vue3-table-lite';
 import {defineComponent, reactive, ref} from "vue";
+import { Inertia } from '@inertiajs/inertia'
 
 export default defineComponent({
     mounted() {
@@ -75,7 +76,7 @@ export default defineComponent({
 
     setup() {
         const isLoading = ref(true);
-        const perPage = ref(15);
+        const perPage = ref(10);
         const users = ref(0);
         const usernameSearch = ref('');
         const rows = ref([]);
@@ -90,21 +91,19 @@ export default defineComponent({
         loadFollowers(offset, limit, sort, order) {
             this.isLoading = true;
 
-            let url = route(this.userListUrl, {
-                connection: this.connections.selected,
-                query: this.usernameSearch,
-                per_page: limit,
-                page: (1 + (offset / limit)),
-                sort_by: sort,
-                sort_order: order,
+            Inertia.reload({
+                only: ['users'],
+                data: {
+                    per_page: limit,
+                    page: (1 + (offset / limit)),
+                    sort_by: sort,
+                    sort_order: order,
+                },
+                onSuccess: page => {
+                    this.rows = page.props.users.data;
+                    this.users = page.props.users.total;
+                },
             });
-
-            axios.get(url)
-                .then((response) => {
-                    this.rows = response.data.data;
-                    this.users = response.data.total;
-
-                });
         },
     },
 
@@ -112,8 +111,8 @@ export default defineComponent({
         overwriteColumns() {
             const columns = [];
 
-            for(let columnIndex in this.columns) {
-                if(this.columns[columnIndex].overwrite) {
+            for (let columnIndex in this.columns) {
+                if (this.columns[columnIndex].overwrite) {
                     columns.push(this.columns[columnIndex].field);
                 }
             }
