@@ -2,21 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\OpenOverlay\Cards\EventHistory;
+use App\OpenOverlay\Cards\Metrics\FollowerTrend;
+use App\OpenOverlay\Cards\Metrics\SubscriberTrend;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use JetBrains\PhpStorm\ArrayShape;
 use Redbeed\OpenOverlay\Models\BotConnection;
+use Redbeed\OpenOverlay\Models\Twitch\UserFollowers;
+use Redbeed\OpenOverlay\Models\User\Connection;
 
 class DashboardController extends Controller
 {
+
+    private Connection $connection;
+
     public function __invoke()
     {
-        return Inertia::render('Dashboard', [
-            'twitchAvailable' => $this->twitchApiCheck(),
-            'appTokenAvailable' => $this->appTokenSet(),
+        $this->connection = Auth::user()->connections->first();
+
+        return Inertia::render('Dashboard/View', [
+            'followChartData'     => Inertia::lazy(fn() => new FollowerTrend($this->connection)),
+            'subscriberChartData' => Inertia::lazy(fn() => new SubscriberTrend($this->connection)),
+            'eventHistory' => Inertia::lazy(fn() => new EventHistory($this->connection)),
+
+            'twitchAvailable'     => $this->twitchApiCheck(),
+            'appTokenAvailable'   => $this->appTokenSet(),
             'twitchUserConnected' => $this->twitchUserConnected(),
-            'botConnected' => $this->botConnected(),
-            'botUserLinked' => $this->botUserLinked(),
+            'botConnected'        => $this->botConnected(),
+            'botUserLinked'       => $this->botUserLinked(),
         ]);
     }
 

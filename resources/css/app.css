@@ -7,3 +7,41 @@
 @tailwind utilities;
 
 @import "components/_vueListTable.css";
+
+.ct-series-a .ct-area,
+.ct-series-a .ct-slice-donut-solid,
+.ct-series-a .ct-slice-pie {
+    fill: theme('colors.blue.500') !important;
+}
+
+.ct-series-a .ct-bar,
+.ct-series-a .ct-line,
+.ct-series-a .ct-point {
+    stroke: theme('colors.flamingo.500') !important;
+    stroke-width: 2px;
+}
+
+.ct-series-a .ct-area,
+.ct-series-a .ct-slice-pie {
+    fill: theme('colors.flamingo.500') !important;
+}
+
+.ct-point {
+    stroke: theme('colors.flamingo.500') !important;
+    stroke-width: 6px !important;
+}
+
+.chartist-tooltip {
+    @apply bg-white dark:bg-gray-900 text-flamingo-500 rounded shadow font-sans !important;
+    min-width: 0 !important;
+    white-space: nowrap;
+    padding: 0.2em 1em !important;
+}
+
+.chartist-tooltip:before {
+    display: none;
+    border-top-color: var(--white) !important;
+}
+
+
+
