@@ -18,7 +18,8 @@ class SubscriberTierPie implements JsonSerializable
     public function result()
     {
         return [
-            'series' => UserSubscriber::where('twitch_user_id', $this->connection->service_user_id)->get()
+            'series' => UserSubscriber::where('twitch_user_id', $this->connection->service_user_id)
+                ->whereNot('subscriber_user_id', $this->connection->service_user_id)->get()
                 ->groupBy(fn($item) => $item->tier)
                 ->map(fn($items) => [
                     'value' => $items->count(),

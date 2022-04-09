@@ -26,6 +26,7 @@ class SubscriberController extends ViewerListController
         $sortDirection = $request->get('sort_order', 'asc');
 
         $subscriberQuery = UserSubscriber::where('twitch_user_id', $connection->service_user_id)
+            ->whereNot('subscriber_user_id', $connection->service_user_id)
             ->orderBy($sort, $sortDirection);
 
         if ($query) {

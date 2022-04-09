@@ -27,8 +27,7 @@ class SubscriberTrend implements JsonSerializable
     {
         // subscription between startDate and today
         return UserSubscriber::where('twitch_user_id', $this->connection->service_user_id)
-
-            ->where('subscriber_user_id', '!=', $this->connection->service_user_id)
+            ->whereNot('subscriber_user_id', $this->connection->service_user_id)
             ->where('created_at', '>', $this->startDate)->get()
             ->groupBy(fn($item) => $item->created_at->format('Y-m-d'))
             ->map(fn($item) => $item->count());
@@ -49,7 +48,7 @@ class SubscriberTrend implements JsonSerializable
     {
         // subscription sum till startDate
         return UserSubscriber::where('twitch_user_id', $this->connection->service_user_id)
-            ->where('subscriber_user_id', '!=', $this->connection->service_user_id)
+            ->whereNot('subscriber_user_id', $this->connection->service_user_id)
             ->where('created_at', '<=', $this->startDate)
             ->count();
     }
