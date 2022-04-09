@@ -1,5 +1,5 @@
 <template>
-    <card class="md:col-span-2 lg:col-span-3  max-h-[20rem] flex flex-col" padding="p-0">
+    <base-card class="md:col-span-2 lg:col-span-3  max-h-[20rem] flex flex-col" padding="p-0">
         <div class="flex justify-between items-center px-6 py-4">
             <div>
                 <h2 class="text-xl font-bold">Event History</h2>
@@ -13,11 +13,11 @@
                 class="px-6 py-1" :class="{'bg-gray-100': index%2 === 0}"
                 v-html="event.description"/>
         </div>
-    </card>
+    </base-card>
 </template>
 
 <script>
-import Card from "@/Pages/Dashboard/Components/Card";
+import BaseCard from "@/Pages/Components/BaseCard";
 
 export default {
     name: "EventHistoryCard",
@@ -29,7 +29,7 @@ export default {
         }
     },
 
-    components: {Card}
+    components: {BaseCard}
 }
 </script>
 

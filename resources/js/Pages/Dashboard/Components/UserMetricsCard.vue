@@ -1,5 +1,5 @@
 <template>
-    <card class="min-h-[10rem] md:col-span-2">
+    <base-card class="min-h-[10rem] md:col-span-2">
         <div class="flex justify-between items-center">
             <div>
                 <h2 class="text-xl font-bold"><slot name="title"/></h2>
@@ -13,17 +13,16 @@
             ref="chart"
             class="absolute inset-0 rounded-b-lg ct-chart top-[40%]"
         />
-    </card>
+    </base-card>
 </template>
 
 <script>
-
-import Card from "@/Pages/Dashboard/Components/Card";
 
 import Chartist from 'chartist';
 import 'chartist/dist/chartist.min.css';
 import 'chartist-plugin-tooltips';
 import 'chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css';
+import BaseCard from "@/Pages/Components/BaseCard";
 
 export default {
     name: "UserMetricsCard",
@@ -83,7 +82,7 @@ export default {
     },
 
     components: {
-        Card,
+        BaseCard,
     },
 }
 </script>

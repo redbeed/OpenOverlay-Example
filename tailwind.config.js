@@ -24,6 +24,7 @@ module.exports = {
 
             colors: {
                 flamingo: {
+                    DEFAULT: '#7400b8',
                     '50': '#f5f3f9',
                     '100': '#efe3fa',
                     '200': '#e2c2f9',

@@ -1,5 +1,5 @@
 <template>
-    <card class="min-h-[10rem]">
+    <base-card class="min-h-[10rem]">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl font-bold">Subscriber Tiers</h2>
         </div>
@@ -17,17 +17,16 @@
             ref="chart"
             class="rounded-b-lg ct-chart mt-2"
         />
-    </card>
+    </base-card>
 </template>
 
 <script>
-
-import Card from "@/Pages/Dashboard/Components/Card";
 
 import Chartist from 'chartist';
 import 'chartist/dist/chartist.min.css';
 import 'chartist-plugin-tooltips';
 import 'chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css';
+import BaseCard from "@/Pages/Components/BaseCard";
 
 export default {
     name: "SubscriberTierPieCard",
@@ -78,7 +77,7 @@ export default {
     },
 
     components: {
-        Card,
+        BaseCard,
     },
 }
 </script>
