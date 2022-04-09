@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white shadow-xl sm:rounded-lg relative" :class="[this.padding]">
+    <div class="bg-white shadow-xl rounded-lg relative" :class="[this.padding]">
         <slot></slot>
     </div>
 </template>

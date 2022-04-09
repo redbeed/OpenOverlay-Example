@@ -7,7 +7,7 @@
             </div>
         </div>
 
-        <div class="h-full overflow-y-scroll grid gird-cols-1 gap-1">
+        <div class="h-full overflow-y-scroll grid gird-cols-1 gap-1 rounded-b-lg">
             <div
                 v-for="(event, index) in this.eventHistory"
                 class="px-6 py-1" :class="{'bg-gray-100': index%2 === 0}"
