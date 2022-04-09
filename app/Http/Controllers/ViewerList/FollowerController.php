@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class FollowerController extends ViewerListController
 {
-
     protected string $listTemplate = 'Follower/List';
 
     public function listUsers(Request $request)
@@ -29,8 +28,8 @@ class FollowerController extends ViewerListController
         $followersQuery = UserFollowers::where('twitch_user_id', $connection->service_user_id)
             ->orderBy($sort, $sortDirection);
 
-        if($query) {
-            $followersQuery = $followersQuery->where('follower_username', 'LIKE', '%'.$query.'%');
+        if ($query) {
+            $followersQuery = $followersQuery->where('follower_username', 'LIKE', '%' . $query . '%');
         }
 
         return $followersQuery->paginate($perPage);

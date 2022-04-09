@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SubscriberController extends ViewerListController
 {
-   protected string $listTemplate = 'Subscriber/List';
+    protected string $listTemplate = 'Subscriber/List';
 
     public function listUsers(Request $request)
     {
@@ -25,13 +25,13 @@ class SubscriberController extends ViewerListController
         $sort = $request->get('sort_by', 'subscriber_username');
         $sortDirection = $request->get('sort_order', 'asc');
 
-        $followersQuery = UserSubscriber::where('twitch_user_id', $connection->service_user_id)
+        $subscriberQuery = UserSubscriber::where('twitch_user_id', $connection->service_user_id)
             ->orderBy($sort, $sortDirection);
 
-        if($query) {
-            $followersQuery = $followersQuery->where('subscriber_username', 'LIKE', '%'.$query.'%');
+        if ($query) {
+            $subscriberQuery = $subscriberQuery->where('subscriber_username', 'LIKE', '%' . $query . '%');
         }
 
-        return response()->json($followersQuery->paginate($perPage));
+        return $subscriberQuery->paginate($perPage);
     }
 }
