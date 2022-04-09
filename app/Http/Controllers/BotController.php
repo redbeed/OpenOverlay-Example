@@ -20,7 +20,7 @@ class BotController extends Controller
         $userConnectedBots = $user->bots->pluck('id');
         $availableBots = BotConnection::all();
 
-        return Inertia::render('Bots/List', [
+        return Inertia::render('Bot/List', [
             'availableBots' => $availableBots,
             'userConnectedBots' => $userConnectedBots
         ]);
