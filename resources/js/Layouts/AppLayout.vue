@@ -225,7 +225,9 @@
                     <div class="sm:flex flex-col gap-y-4">
 
                         <div class="w-full" v-for="menuItem in this.menuItems">
-                            <jet-nav-link :href="route(menuItem.url)" :active="route().current(menuItem.url)">
+                            <jet-nav-link
+                                :href="menuItem.url ? route(menuItem.url) : null"
+                                :active="menuItem.url ? route().current(menuItem.url) : null">
                                 <i class="fa-solid fa-fw mr-3" :class="menuItem.icon || ''"></i>{{ menuItem.name }}
                             </jet-nav-link>
 
@@ -293,15 +295,23 @@
                         ],
                     },
                     {
-                        name: 'Bots',
-                        icon: 'fa-robot',
-                        url: 'bots',
+                        name: 'Trigger',
+                        icon: 'fa-arrows-to-dot',
+                    },
+                    {
+                        name: 'Actions',
+                        icon: 'fa-play',
                         child: [
                             {
                                 name: 'Commands',
                                 url: 'bot.chat-command',
                             },
                         ],
+                    },
+                    {
+                        name: 'Bots',
+                        icon: 'fa-robot',
+                        url: 'bots',
                     },
                 ],
             }

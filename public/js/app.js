@@ -20175,13 +20175,19 @@ __webpack_require__.r(__webpack_exports__);
           url: 'subscribers'
         }]
       }, {
-        name: 'Bots',
-        icon: 'fa-robot',
-        url: 'bots',
+        name: 'Trigger',
+        icon: 'fa-arrows-to-dot'
+      }, {
+        name: 'Actions',
+        icon: 'fa-play',
         child: [{
           name: 'Commands',
           url: 'bot.chat-command'
         }]
+      }, {
+        name: 'Bots',
+        icon: 'fa-robot',
+        url: 'bots'
       }]
     };
   },
@@ -24507,8 +24513,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* CLASS */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Sitebar Links "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_62, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(this.menuItems, function (menuItem) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_nav_link, {
-      href: _ctx.route(menuItem.url),
-      active: _ctx.route().current(menuItem.url)
+      href: menuItem.url ? _ctx.route(menuItem.url) : null,
+      active: menuItem.url ? _ctx.route().current(menuItem.url) : null
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
