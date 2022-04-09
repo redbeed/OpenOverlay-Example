@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\OpenOverlay\Cards\EventHistory;
 use App\OpenOverlay\Cards\Metrics\FollowerTrend;
+use App\OpenOverlay\Cards\Metrics\SubscriberTierPie;
 use App\OpenOverlay\Cards\Metrics\SubscriberTrend;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
@@ -26,6 +27,7 @@ class DashboardController extends Controller
         return Inertia::render('Dashboard/View', [
             'followChartData'     => Inertia::lazy(fn() => new FollowerTrend($this->connection)),
             'subscriberChartData' => Inertia::lazy(fn() => new SubscriberTrend($this->connection)),
+            'subscriberTierChartData' => Inertia::lazy(fn() => new SubscriberTierPie($this->connection)),
             'eventHistory' => Inertia::lazy(fn() => new EventHistory($this->connection)),
 
             'twitchAvailable'     => $this->twitchApiCheck(),

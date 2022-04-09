@@ -1,5 +1,5 @@
 <template>
-    <card class="min-h-[10rem]">
+    <card class="min-h-[10rem] md:col-span-2">
         <div class="flex justify-between items-center">
             <div>
                 <h2 class="text-xl font-bold"><slot name="title"/></h2>

@@ -1,5 +1,5 @@
 <template>
-    <card class="col-span-2  max-h-[20rem] flex flex-col" padding="p-0">
+    <card class="md:col-span-2 lg:col-span-3  max-h-[20rem] flex flex-col" padding="p-0">
         <div class="flex justify-between items-center px-6 py-4">
             <div>
                 <h2 class="text-xl font-bold">Event History</h2>

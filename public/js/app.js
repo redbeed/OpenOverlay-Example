@@ -21214,6 +21214,68 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue?vue&type=script&lang=js":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Pages_Dashboard_Components_Card__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Pages/Dashboard/Components/Card */ "./resources/js/Pages/Dashboard/Components/Card.vue");
+/* harmony import */ var chartist__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chartist */ "./node_modules/chartist/dist/chartist.js");
+/* harmony import */ var chartist__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(chartist__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var chartist_dist_chartist_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! chartist/dist/chartist.min.css */ "./node_modules/chartist/dist/chartist.min.css");
+/* harmony import */ var chartist_plugin_tooltips__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! chartist-plugin-tooltips */ "./node_modules/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.js");
+/* harmony import */ var chartist_plugin_tooltips__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(chartist_plugin_tooltips__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var chartist_plugin_tooltips_dist_chartist_plugin_tooltip_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css */ "./node_modules/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css");
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "SubscriberTierPieCard",
+  props: {
+    chartData: {
+      type: Object,
+      "default": {
+        labels: [],
+        series: []
+      }
+    }
+  },
+  data: function data() {
+    return {
+      chartist: null
+    };
+  },
+  mounted: function mounted() {
+    this.chartist = new (chartist__WEBPACK_IMPORTED_MODULE_1___default().Pie)(this.$refs.chart, this.chartData, {
+      donut: true,
+      donutWidth: 10,
+      donutSolid: true,
+      startAngle: 270,
+      showLabel: false
+    });
+  },
+  computed: {
+    total: function total() {
+      return this.chartData.series.reduce(function (acc, item) {
+        return acc + item.value;
+      }, 0);
+    }
+  },
+  components: {
+    Card: _Pages_Dashboard_Components_Card__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Dashboard/Components/UserMetricsCard.vue?vue&type=script&lang=js":
 /*!*************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Dashboard/Components/UserMetricsCard.vue?vue&type=script&lang=js ***!
@@ -21322,6 +21384,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _Pages_Dashboard_Components_UserMetricsCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Pages/Dashboard/Components/UserMetricsCard */ "./resources/js/Pages/Dashboard/Components/UserMetricsCard.vue");
 /* harmony import */ var _Pages_Dashboard_Components_EventHistoryCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Pages/Dashboard/Components/EventHistoryCard */ "./resources/js/Pages/Dashboard/Components/EventHistoryCard.vue");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var _Pages_Dashboard_Components_SubscriberTierPieCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Pages/Dashboard/Components/SubscriberTierPieCard */ "./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue");
+
+
 
 
 
@@ -21332,6 +21398,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       followChartData: null,
       subscriberChartData: null,
+      subscriberTierChartData: null,
       eventHistory: null,
       chartist: null
     };
@@ -21340,15 +21407,18 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.reload({
-      only: ['followChartData', 'subscriberChartData', 'eventHistory'],
+      only: ['followChartData', 'subscriberChartData', 'eventHistory', 'subscriberTierChartData'],
       onSuccess: function onSuccess(page) {
         _this.followChartData = page.props.followChartData;
         _this.subscriberChartData = page.props.subscriberChartData;
         _this.eventHistory = page.props.eventHistory;
+        _this.subscriberTierChartData = page.props.subscriberTierChartData;
       }
     });
   },
   components: {
+    SubscriberTierPieCard: _Pages_Dashboard_Components_SubscriberTierPieCard__WEBPACK_IMPORTED_MODULE_6__["default"],
+    Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__.Link,
     EventHistoryCard: _Pages_Dashboard_Components_EventHistoryCard__WEBPACK_IMPORTED_MODULE_4__["default"],
     UserMetricsCard: _Pages_Dashboard_Components_UserMetricsCard__WEBPACK_IMPORTED_MODULE_3__["default"],
     AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -26950,7 +27020,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("card");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_card, {
-    "class": "col-span-2 max-h-[20rem] flex flex-col",
+    "class": "md:col-span-2 lg:col-span-3 max-h-[20rem] flex flex-col",
     padding: "p-0"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26966,6 +27036,70 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), 256
       /* UNKEYED_FRAGMENT */
       ))])];
+    }),
+    _: 1
+    /* STABLE */
+
+  });
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue?vue&type=template&id=774cf986":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue?vue&type=template&id=774cf986 ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "flex justify-between items-center mb-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "text-xl font-bold"
+}, "Subscriber Tiers")], -1
+/* HOISTED */
+);
+
+var _hoisted_2 = {
+  "class": "shrink-0"
+};
+var _hoisted_3 = {
+  "class": "font-mono"
+};
+var _hoisted_4 = {
+  ref: "chart",
+  "class": "rounded-b-lg ct-chart mt-2"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _this = this;
+
+  var _component_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("card");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_card, {
+    "class": "min-h-[10rem]"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_this.chartData.series, function (item) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
+          key: item.value,
+          "class": "text-xs leading-normal"
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.value / _this.total * 100 | _ctx.number) + "%", 1
+        /* TEXT */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.name) + " (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.value) + ") ", 1
+        /* TEXT */
+        )]);
+      }), 128
+      /* KEYED_FRAGMENT */
+      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, null, 512
+      /* NEED_PATCH */
+      )];
     }),
     _: 1
     /* STABLE */
@@ -27010,7 +27144,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("card");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_card, {
-    "class": "min-h-[10rem]"
+    "class": "min-h-[10rem] md:col-span-2"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "title")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "description")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.maxFollow), 1
@@ -27044,7 +27178,7 @@ var _hoisted_1 = {
   "class": "max-w-7xl mx-auto"
 };
 var _hoisted_2 = {
-  "class": "grid gird-cols-1 md:grid-cols-2 gap-4"
+  "class": "grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Followers");
@@ -27058,9 +27192,13 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _this = this;
 
+  var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
+
   var _component_user_metrics_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("user-metrics-card");
 
   var _component_event_history_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("event-history-card");
+
+  var _component_subscriber_tier_pie_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("subscriber-tier-pie-card");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
@@ -27073,7 +27211,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "chart-data": _this.followChartData
       }, {
         title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_3];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+            href: _ctx.route('followers')
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_3];
+            }),
+            _: 1
+            /* STABLE */
+
+          }, 8
+          /* PROPS */
+          , ["href"])];
         }),
         description: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_4];
@@ -27088,7 +27237,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "chart-data": _this.subscriberChartData
       }, {
         title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_5];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+            href: _ctx.route('subscribers')
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_5];
+            }),
+            _: 1
+            /* STABLE */
+
+          }, 8
+          /* PROPS */
+          , ["href"])];
         }),
         description: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_6];
@@ -27102,7 +27262,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "event-history": _this.eventHistory
       }, null, 8
       /* PROPS */
-      , ["event-history"])])])];
+      , ["event-history"]), _this.subscriberTierChartData ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_subscriber_tier_pie_card, {
+        key: 2,
+        "chart-data": _this.subscriberTierChartData
+      }, null, 8
+      /* PROPS */
+      , ["chart-data"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])];
     }),
     _: 1
     /* STABLE */
@@ -65522,6 +65687,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue":
+/*!***************************************************************************!*\
+  !*** ./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _SubscriberTierPieCard_vue_vue_type_template_id_774cf986__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SubscriberTierPieCard.vue?vue&type=template&id=774cf986 */ "./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue?vue&type=template&id=774cf986");
+/* harmony import */ var _SubscriberTierPieCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SubscriberTierPieCard.vue?vue&type=script&lang=js */ "./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue?vue&type=script&lang=js");
+/* harmony import */ var _var_www_html_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_var_www_html_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_SubscriberTierPieCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_SubscriberTierPieCard_vue_vue_type_template_id_774cf986__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Dashboard/Components/UserMetricsCard.vue":
 /*!*********************************************************************!*\
   !*** ./resources/js/Pages/Dashboard/Components/UserMetricsCard.vue ***!
@@ -66726,6 +66919,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue?vue&type=script&lang=js":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue?vue&type=script&lang=js ***!
+  \***************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SubscriberTierPieCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SubscriberTierPieCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./SubscriberTierPieCard.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Dashboard/Components/UserMetricsCard.vue?vue&type=script&lang=js":
 /*!*********************************************************************************************!*\
   !*** ./resources/js/Pages/Dashboard/Components/UserMetricsCard.vue?vue&type=script&lang=js ***!
@@ -67782,6 +67991,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue?vue&type=template&id=774cf986":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue?vue&type=template&id=774cf986 ***!
+  \*********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SubscriberTierPieCard_vue_vue_type_template_id_774cf986__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SubscriberTierPieCard_vue_vue_type_template_id_774cf986__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./SubscriberTierPieCard.vue?vue&type=template&id=774cf986 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue?vue&type=template&id=774cf986");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Dashboard/Components/UserMetricsCard.vue?vue&type=template&id=2151c733":
 /*!***************************************************************************************************!*\
   !*** ./resources/js/Pages/Dashboard/Components/UserMetricsCard.vue?vue&type=template&id=2151c733 ***!
@@ -68787,6 +69012,7 @@ var map = {
 	"./Bots/List.vue": "./resources/js/Pages/Bots/List.vue",
 	"./Dashboard/Components/Card.vue": "./resources/js/Pages/Dashboard/Components/Card.vue",
 	"./Dashboard/Components/EventHistoryCard.vue": "./resources/js/Pages/Dashboard/Components/EventHistoryCard.vue",
+	"./Dashboard/Components/SubscriberTierPieCard.vue": "./resources/js/Pages/Dashboard/Components/SubscriberTierPieCard.vue",
 	"./Dashboard/Components/UserMetricsCard.vue": "./resources/js/Pages/Dashboard/Components/UserMetricsCard.vue",
 	"./Dashboard/View.vue": "./resources/js/Pages/Dashboard/View.vue",
 	"./Follower/List.vue": "./resources/js/Pages/Follower/List.vue",
