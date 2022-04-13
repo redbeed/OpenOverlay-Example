@@ -7,18 +7,15 @@ use App\OpenOverlay\Cards\Metrics\FollowerTrend;
 use App\OpenOverlay\Cards\Metrics\SubscriberTierPie;
 use App\OpenOverlay\Cards\Metrics\SubscriberTrend;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
-use JetBrains\PhpStorm\ArrayShape;
 use Redbeed\OpenOverlay\Models\BotConnection;
-use Redbeed\OpenOverlay\Models\Twitch\UserFollowers;
 use Redbeed\OpenOverlay\Models\User\Connection;
 
 class DashboardController extends Controller
 {
 
-    private Connection $connection;
+    private ?Connection $connection;
 
     public function __invoke()
     {

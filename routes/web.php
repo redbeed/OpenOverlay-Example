@@ -1,9 +1,5 @@
 <?php
 
-use App\Http\Controllers\Bot\ChatCommand\AddController as BotChatCommandAddController;
-use App\Http\Controllers\Bot\ChatCommand\ListController as BotChatCommandListController;
-use App\Http\Controllers\Bot\ChatCommand\DeleteController as BotChatCommandDeleteController;
-use App\Http\Controllers\Bot\ChatCommand\EditController as BotChatCommandEditController;
 use App\Http\Controllers\BotController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ViewerList\FollowerController;
@@ -42,33 +38,6 @@ Route::middleware('auth')->group(function () {
         Route::get('remove-from-chat/{botId}')
             ->uses([BotController::class, 'removeBotFromChat'])
             ->name('bots.remove-from-chat');
-
-
-        Route::prefix('chat-command')->group(function () {
-            Route::get('/')
-                ->uses(BotChatCommandListController::class)
-                ->name('bot.chat-command');
-
-            Route::get('/add')
-                ->uses(BotChatCommandAddController::class)
-                ->name('bot.chat-command.add');
-
-            Route::post('/add')
-                ->uses([BotChatCommandAddController::class, 'postAction'])
-                ->name('bot.chat-command.add.post');
-
-            Route::get('/edit/{commandId}')
-                ->uses(BotChatCommandEditController::class)
-                ->name('bot.chat-command.edit');
-
-            Route::post('/edit/{commandId}')
-                ->uses([BotChatCommandEditController::class, 'saveAction'])
-                ->name('bot.chat-command.edit.post');
-
-            Route::get('/delete/{commandId}')
-                ->uses(BotChatCommandDeleteController::class)
-                ->name('bot.chat-command.delete');
-        });
     });
 
     Route::prefix('followers')->group(function () {

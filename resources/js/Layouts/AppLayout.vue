@@ -301,12 +301,7 @@
                     {
                         name: 'Actions',
                         icon: 'fa-play',
-                        child: [
-                            {
-                                name: 'Commands',
-                                url: 'bot.chat-command',
-                            },
-                        ],
+                        child: [],
                     },
                     {
                         name: 'Bots',

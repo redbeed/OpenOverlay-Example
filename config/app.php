@@ -177,7 +177,9 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
 
-        \App\Providers\ForceHttpsServiceProvider::class
+        \App\Providers\AutomationsServiceProvider::class,
+
+        \App\Providers\ForceHttpsServiceProvider::class,
 
     ],
 
