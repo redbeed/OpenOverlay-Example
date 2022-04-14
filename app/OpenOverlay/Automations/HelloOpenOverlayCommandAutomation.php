@@ -12,6 +12,9 @@ use Redbeed\OpenOverlay\Automations\Filters\Twitch\ChannelStatus;
 class HelloOpenOverlayCommandAutomation extends AutomationHandler
 {
 
+    public static string $name = 'Hello OpenOverlay';
+    public static string $description = 'Says hello to the user';
+
     /**
      * @return Filter[]
      */
@@ -21,7 +24,7 @@ class HelloOpenOverlayCommandAutomation extends AutomationHandler
             ->connections()->where('service', 'twitch')->first();
 
         return [
-            new ChatMessageContainsFilter('!openOverlay'),
+            new ChatMessageContainsFilter('!hello'),
             (new ChannelStatus($twitch))->isOnline()
         ];
     }
@@ -29,7 +32,7 @@ class HelloOpenOverlayCommandAutomation extends AutomationHandler
     public function actions(): array
     {
         return [
-            new TwitchChatBotMessage('I am alive! https://openoverlay.dev'),
+            new TwitchChatBotMessage('Hello :username, I am alive and made with https://openoverlay.dev'),
         ];
     }
 }

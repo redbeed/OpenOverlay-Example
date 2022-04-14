@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutomationsController;
 use App\Http\Controllers\BotController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ViewerList\FollowerController;
@@ -25,6 +26,12 @@ Route::middleware(['auth:sanctum', 'verified'])
     ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    Route::prefix('automations')->group(function () {
+        Route::get('/')
+            ->uses(AutomationsController::class)
+            ->name('automations');
+    });
 
     Route::prefix('bot')->group(function () {
         Route::get('/')

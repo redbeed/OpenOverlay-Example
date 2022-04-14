@@ -231,11 +231,12 @@
                                 <i class="fa-solid fa-fw mr-3" :class="menuItem.icon || ''"></i>{{ menuItem.name }}
                             </jet-nav-link>
 
-                            <div class="sm:flex flex-col gap-y-2 mt-2" v-if="menuItem.child">
+                            <div class="sm:flex flex-col gap-y-1 mt-1" v-if="menuItem.child">
                                 <jet-nav-link
                                     v-for="childItem in menuItem.child"
                                     :href="route(childItem.url)"  :active="route().current(childItem.url)">
-                                    <i class="fa-solid fa-fw mr-3" :class="childItem.icon || ''"></i>{{ childItem.name }}
+                                    <i class="fa-solid text-md fa-fw mr-3" :class="childItem.icon || ''"></i>
+                                    <span class="text-sm">{{ childItem.name }}</span>
                                 </jet-nav-link>
                             </div>
                         </div>
@@ -295,13 +296,9 @@
                         ],
                     },
                     {
-                        name: 'Trigger',
-                        icon: 'fa-arrows-to-dot',
-                    },
-                    {
-                        name: 'Actions',
-                        icon: 'fa-play',
-                        child: [],
+                        name: 'Automations',
+                        icon: 'fa-bolt',
+                        url: 'automations',
                     },
                     {
                         name: 'Bots',

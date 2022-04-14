@@ -8832,6 +8832,12 @@ select{
 .mr-1{
   margin-right: 0.25rem;
 }
+.mb-10{
+  margin-bottom: 2.5rem;
+}
+.mb-2{
+  margin-bottom: 0.5rem;
+}
 .block{
   display: block;
 }
@@ -9015,6 +9021,9 @@ select{
 .cursor-pointer{
   cursor: pointer;
 }
+.cursor-not-allowed{
+  cursor: not-allowed;
+}
 .list-inside{
   list-style-position: inside;
 }
@@ -9030,6 +9039,9 @@ select{
 .grid-cols-5{
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
+.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 .flex-row{
   flex-direction: row;
 }
@@ -9041,6 +9053,12 @@ select{
 }
 .content-center{
   align-content: center;
+}
+.content-end{
+  align-content: flex-end;
+}
+.items-end{
+  align-items: flex-end;
 }
 .items-center{
   align-items: center;
@@ -9075,8 +9093,8 @@ select{
 .gap-y-4{
   row-gap: 1rem;
 }
-.gap-y-2{
-  row-gap: 0.5rem;
+.gap-y-1{
+  row-gap: 0.25rem;
 }
 .space-x-8 > :not([hidden]) ~ :not([hidden]){
   --tw-space-x-reverse: 0;
@@ -9296,6 +9314,14 @@ select{
   --tw-bg-opacity: 1;
   background-color: rgb(116 0 184 / var(--tw-bg-opacity));
 }
+.bg-slate-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+}
+.bg-slate-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
 .bg-opacity-25{
   --tw-bg-opacity: 0.25;
 }
@@ -9491,6 +9517,9 @@ select{
 .capitalize{
   text-transform: capitalize;
 }
+.italic{
+  font-style: italic;
+}
 .leading-5{
   line-height: 1.25rem;
 }
@@ -9614,6 +9643,18 @@ select{
 .text-flamingo{
   --tw-text-opacity: 1;
   color: rgb(116 0 184 / var(--tw-text-opacity));
+}
+.text-slate-500{
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity));
+}
+.text-slate-400{
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
+}
+.text-slate-200{
+  --tw-text-opacity: 1;
+  color: rgb(226 232 240 / var(--tw-text-opacity));
 }
 .underline{
   -webkit-text-decoration-line: underline;
@@ -10345,6 +10386,10 @@ select{
 
   .lg\:grid-cols-4{
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .lg\:px-8{
