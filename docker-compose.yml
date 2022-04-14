@@ -19,7 +19,6 @@ services:
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
         volumes:
             - '.:/var/www/html'
-            - '../OpenOverlay:/var/www/html/vendor/redbeed/openoverlay'
         networks:
             - openoverlay
         depends_on:
@@ -86,7 +85,6 @@ services:
             LARAVEL_SAIL: 1
         volumes:
             - '.:/var/www/html'
-            - '../OpenOverlay:/var/www/html/vendor/redbeed/openoverlay'
         networks:
             - openoverlay
         depends_on:
