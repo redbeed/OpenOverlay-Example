@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class CreateFilterController
 {
-
     public function __invoke(Request $request, Automation $automation, AddFilterToAutomation $action)
     {
         $filter = $action->execute($automation, $request->all());

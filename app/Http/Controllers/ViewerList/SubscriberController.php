@@ -30,7 +30,7 @@ class SubscriberController extends ViewerListController
             ->orderBy($sort, $sortDirection);
 
         if ($query) {
-            $subscriberQuery = $subscriberQuery->where('subscriber_username', 'LIKE', '%' . $query . '%');
+            $subscriberQuery = $subscriberQuery->where('subscriber_username', 'LIKE', '%'.$query.'%');
         }
 
         return $subscriberQuery->paginate($perPage);

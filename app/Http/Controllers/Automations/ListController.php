@@ -23,15 +23,15 @@ class ListController extends Controller
     {
         $codeBased = collect(app('automations')->getAutomations())
             ->filter(function ($automations) {
-                return !empty($automations);
+                return ! empty($automations);
             })
             ->mapWithKeys(function ($automations, $triggerClass) {
                 return [
-                    $triggerClass => collect($automations)
-                        ->filter((fn($automation) => !($automation instanceof Closure)))
+                    $triggerClass                  => collect($automations)
+                        ->filter((fn ($automation) => ! ($automation instanceof Closure)))
                         ->map(function ($automation) {
-                        return $this->parseAutomation($automation);
-                    }),
+                            return $this->parseAutomation($automation);
+                        }),
                 ];
             })
             ->toArray();
@@ -61,15 +61,13 @@ class ListController extends Controller
                         ->sortBy([
                             ['editable', 'desc'],
                             ['name', 'asc'],
-                        ])
+                        ]),
                 ];
             });
     }
 
-
     private function parseAutomation(string $automationClass): array
     {
-
         $automation = (new \ReflectionClass($automationClass))->newInstanceWithoutConstructor();
 
         return [

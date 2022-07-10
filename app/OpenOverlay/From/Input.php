@@ -4,7 +4,6 @@ namespace App\OpenOverlay\From;
 
 class Input extends FormElement implements \JsonSerializable
 {
-
     public static string $type = 'input';
 
     public function __construct(string $name)
@@ -16,6 +15,6 @@ class Input extends FormElement implements \JsonSerializable
 
     public function getValue(): string
     {
-        return (string)$this->value;
+        return (string) $this->value;
     }
 }

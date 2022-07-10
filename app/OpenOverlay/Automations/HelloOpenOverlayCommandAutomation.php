@@ -5,14 +5,14 @@ namespace App\OpenOverlay\Automations;
 use App\Models\User;
 use Redbeed\OpenOverlay\Automations\Actions\TwitchChatBotMessage;
 use Redbeed\OpenOverlay\Automations\AutomationHandler;
-use Redbeed\OpenOverlay\Automations\Filters\Filter;
 use Redbeed\OpenOverlay\Automations\Filters\ChatMessage\ChatMessageContainsFilter;
+use Redbeed\OpenOverlay\Automations\Filters\Filter;
 use Redbeed\OpenOverlay\Automations\Filters\Twitch\ChannelStatus;
 
 class HelloOpenOverlayCommandAutomation extends AutomationHandler
 {
-
     public static string $name = 'Hello OpenOverlay';
+
     public static string $description = 'Says hello to the user';
 
     /**
@@ -25,7 +25,7 @@ class HelloOpenOverlayCommandAutomation extends AutomationHandler
 
         return [
             new ChatMessageContainsFilter('!hello'),
-            (new ChannelStatus($twitch))->isOnline()
+            (new ChannelStatus($twitch))->isOnline(),
         ];
     }
 

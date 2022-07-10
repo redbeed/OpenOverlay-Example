@@ -9,7 +9,6 @@ use Redbeed\OpenOverlay\Support\Facades\Automation;
 
 class DatabaseAutomationsServiceProvider extends OOAutomationsServiceProvider
 {
-
     public function register()
     {
         parent::register();

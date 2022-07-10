@@ -14,6 +14,6 @@ class AutomationsServiceProvider extends OOAutomationsServiceProvider
             HelloOpenOverlayCommandAutomation::class,
         ],
 
-        ScheduleTrigger::class => []
+        ScheduleTrigger::class => [],
     ];
 }

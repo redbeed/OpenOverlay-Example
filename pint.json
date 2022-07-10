@@ -1,0 +1,12 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "simplified_null_return": true,
+        "unary_operator_spaces": true,
+        "binary_operator_spaces": {
+            "operators": {
+                "=>": "align_single_space_minimal"
+            }
+        }
+    }
+}

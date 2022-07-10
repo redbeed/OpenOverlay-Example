@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
-use Laravel\Jetstream\Jetstream;
 
 class ShareInertiaData
 {
@@ -12,19 +11,19 @@ class ShareInertiaData
     {
         Inertia::share(array_filter([
             'twitchUser' => function () use ($request) {
-                if (!$request->user()) {
+                if (! $request->user()) {
                     return;
                 }
 
                 $twitch = $request->user()->connections()->where('service', 'twitch')->first();
 
                 if (empty($twitch)) {
-                    return null;
+                    return;
                 }
 
                 return $twitch->toArray();
             },
-            'message' => Session::pull('message', null)
+            'message' => Session::pull('message', null),
         ]));
 
         return $next($request);

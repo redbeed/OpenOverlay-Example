@@ -4,7 +4,6 @@ namespace App\OpenOverlay\From;
 
 class Boolean extends FormElement implements \JsonSerializable
 {
-
     public static string $type = 'checkbox';
 
     public function __construct(string $name)
@@ -17,6 +16,6 @@ class Boolean extends FormElement implements \JsonSerializable
 
     public function getValue(): bool
     {
-        return (bool)$this->value;
+        return (bool) $this->value;
     }
 }

@@ -12,8 +12,8 @@ use Redbeed\OpenOverlay\Models\User\Connection;
 
 class SubscriberTrend implements JsonSerializable
 {
-
     private Connection $connection;
+
     private Carbon $startDate;
 
     public function __construct(Connection $connection, ?Carbon $startDate = null)
@@ -22,15 +22,14 @@ class SubscriberTrend implements JsonSerializable
         $this->startDate = $startDate ?? today()->subMonth();
     }
 
-
     private function subscriber(): Collection
     {
         // subscription between startDate and today
         return UserSubscriber::where('twitch_user_id', $this->connection->service_user_id)
             ->whereNot('subscriber_user_id', $this->connection->service_user_id)
             ->where('created_at', '>', $this->startDate)->get()
-            ->groupBy(fn($item) => $item->created_at->format('Y-m-d'))
-            ->map(fn($item) => $item->count());
+            ->groupBy(fn ($item) => $item->created_at->format('Y-m-d'))
+            ->map(fn ($item)     => $item->count());
     }
 
     private function subscriptionEnded(): Collection
@@ -40,8 +39,8 @@ class SubscriberTrend implements JsonSerializable
             ->onlyTrashed()
             ->where('deleted_at', '>', $this->startDate)
             ->where('created_at', '>', $this->startDate)->get()
-            ->groupBy(fn($item) => $item->deleted_at->format('Y-m-d'))
-            ->map(fn($item) => -($item->count()));
+            ->groupBy(fn ($item) => $item->deleted_at->format('Y-m-d'))
+            ->map(fn ($item)     => -($item->count()));
     }
 
     private function subscriptionBase(): int
@@ -53,7 +52,7 @@ class SubscriberTrend implements JsonSerializable
             ->count();
     }
 
-    #[ArrayShape(['labels' => "array", 'series' => "array"])]
+    #[ArrayShape(['labels' => 'array', 'series' => 'array'])]
     public function result(): array
     {
         $subscriber = $this->subscriber();
@@ -85,12 +84,12 @@ class SubscriberTrend implements JsonSerializable
         return [
             'labels' => Arr::pluck($days, 'day'),
             'series' => [
-                Arr::pluck($days, 'count')
+                Arr::pluck($days, 'count'),
             ],
         ];
     }
 
-    #[ArrayShape(['labels' => "array", 'series' => "array"])]
+    #[ArrayShape(['labels' => 'array', 'series' => 'array'])]
     public function jsonSerialize()
     {
         return $this->result();

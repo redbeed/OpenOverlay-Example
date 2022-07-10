@@ -13,7 +13,7 @@ class OverlayExampleController extends Controller
         $subscribers = UserSubscriber::where('twitch_user_id', $twitchUserId)->orderBy('created_at', 'DESC')->get();
 
         return view('overlay.example', [
-            'twitchUserId' => $twitchUserId
+            'twitchUserId' => $twitchUserId,
         ]);
     }
 }

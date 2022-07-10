@@ -20,11 +20,11 @@ class SubscriberTierPie implements JsonSerializable
         return [
             'series' => UserSubscriber::where('twitch_user_id', $this->connection->service_user_id)
                 ->whereNot('subscriber_user_id', $this->connection->service_user_id)->get()
-                ->groupBy(fn($item) => $item->tier)
-                ->map(fn($items) => [
+                ->groupBy(fn ($item) => $item->tier)
+                ->map(fn ($items)    => [
                     'value' => $items->count(),
-                    'name'  => $items->first()->tier_name . ' (tier ' . $items->first()->tier . ')',
-                ])->values()
+                    'name'  => $items->first()->tier_name.' (tier '.$items->first()->tier.')',
+                ])->values(),
         ];
     }
 

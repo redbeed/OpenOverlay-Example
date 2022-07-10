@@ -14,7 +14,6 @@ use Redbeed\OpenOverlay\Models\User\Connection;
 
 class DashboardController extends Controller
 {
-
     private ?Connection $connection;
 
     public function __invoke()
@@ -22,10 +21,10 @@ class DashboardController extends Controller
         $this->connection = Auth::user()->connections->first();
 
         return Inertia::render('Dashboard/View', [
-            'followChartData'     => Inertia::lazy(fn() => new FollowerTrend($this->connection)),
-            'subscriberChartData' => Inertia::lazy(fn() => new SubscriberTrend($this->connection)),
-            'subscriberTierChartData' => Inertia::lazy(fn() => new SubscriberTierPie($this->connection)),
-            'eventHistory' => Inertia::lazy(fn() => new EventHistory($this->connection)),
+            'followChartData'         => Inertia::lazy(fn ()         => new FollowerTrend($this->connection)),
+            'subscriberChartData'     => Inertia::lazy(fn ()     => new SubscriberTrend($this->connection)),
+            'subscriberTierChartData' => Inertia::lazy(fn () => new SubscriberTierPie($this->connection)),
+            'eventHistory'            => Inertia::lazy(fn ()            => new EventHistory($this->connection)),
 
             'twitchAvailable'     => $this->twitchApiCheck(),
             'appTokenAvailable'   => $this->appTokenSet(),
@@ -55,7 +54,7 @@ class DashboardController extends Controller
 
     private function appTokenSet(): bool
     {
-        return !empty(config('openoverlay.webhook.twitch.app_token.token'));
+        return ! empty(config('openoverlay.webhook.twitch.app_token.token'));
     }
 
     private function twitchApiCheck(): bool

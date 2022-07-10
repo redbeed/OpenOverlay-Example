@@ -16,11 +16,11 @@ class Automation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'description', 'type', 'active', 'trigger'
+        'name', 'description', 'type', 'active', 'trigger',
     ];
 
     protected $casts = [
-        'active' => 'boolean'
+        'active' => 'boolean',
     ];
 
     public function user(): BelongsTo

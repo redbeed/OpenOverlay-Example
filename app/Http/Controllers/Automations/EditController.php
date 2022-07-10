@@ -17,8 +17,6 @@ use function inertia;
 
 class EditController extends Controller
 {
-
-
     public function __invoke(Automation $automation)
     {
         return inertia('Automations/Edit', [

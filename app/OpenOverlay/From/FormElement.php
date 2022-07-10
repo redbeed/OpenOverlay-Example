@@ -2,15 +2,16 @@
 
 namespace App\OpenOverlay\From;
 
-use JetBrains\PhpStorm\ArrayShape;
-
 class FormElement implements \JsonSerializable
 {
     public static string $type = 'hidden';
 
     public string $name;
+
     protected mixed $value = null;
+
     protected ?string $label = null;
+
     protected ?string $placeholder = null;
 
     public array $rules = [];

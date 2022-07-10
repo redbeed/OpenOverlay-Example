@@ -14,6 +14,7 @@ class SteamHUD extends Component
     public array $socials = [];
 
     public string $mainColor;
+
     public array $recent;
 
     public function __construct(string $twitchUserId, array $socialIcons = [], string $mainColor = 'flamingo')

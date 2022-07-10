@@ -9,7 +9,7 @@ use Redbeed\OpenOverlay\Automations\Filters\Filter;
 class SettingsHandler implements JsonSerializable
 {
     /**
-     * @var class-string<Filter>|class-string $filterClass
+     * @var class-string<Filter>|class-string
      */
     public static string $referenceObject = Filter::class;
 
@@ -26,7 +26,7 @@ class SettingsHandler implements JsonSerializable
     public function prepare(array $inputs): static
     {
         foreach ($this->form() as $key => $formElement) {
-            if (!empty($inputs[$formElement->getId()])) {
+            if (! empty($inputs[$formElement->getId()])) {
                 $formElement = $formElement->setValue($inputs[$formElement->getId()]);
             }
 
@@ -70,7 +70,7 @@ class SettingsHandler implements JsonSerializable
                 ->map(function (FormElement $formElement) {
                     return $formElement->jsonSerialize();
                 })
-                ->toArray()
+                ->toArray(),
         ];
     }
 

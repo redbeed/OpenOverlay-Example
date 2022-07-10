@@ -12,8 +12,8 @@ use Redbeed\OpenOverlay\Models\User\Connection;
 
 class FollowerTrend implements JsonSerializable
 {
-
     private Connection $connection;
+
     private Carbon $startDate;
 
     public function __construct(Connection $connection, ?Carbon $startDate = null)
@@ -22,14 +22,13 @@ class FollowerTrend implements JsonSerializable
         $this->startDate = $startDate ?? today()->subMonth();
     }
 
-
     private function follows(): Collection
     {
         // follows between startDate and today
         return UserFollowers::where('twitch_user_id', $this->connection->service_user_id)
             ->where('followed_at', '>', $this->startDate)->get()
-            ->groupBy(fn($item) => $item->followed_at->format('Y-m-d'))
-            ->map(fn($item) => $item->count());
+            ->groupBy(fn ($item) => $item->followed_at->format('Y-m-d'))
+            ->map(fn ($item)     => $item->count());
     }
 
     private function unfollows(): Collection
@@ -38,8 +37,8 @@ class FollowerTrend implements JsonSerializable
         return UserFollowers::where('twitch_user_id', $this->connection->service_user_id)
             ->onlyTrashed()
             ->where('deleted_at', '>', $this->startDate)->get()
-            ->groupBy(fn($item) => $item->deleted_at->format('Y-m-d'))
-            ->map(fn($item) => -($item->count()));
+            ->groupBy(fn ($item) => $item->deleted_at->format('Y-m-d'))
+            ->map(fn ($item)     => -($item->count()));
     }
 
     private function followSum(): int
@@ -51,7 +50,7 @@ class FollowerTrend implements JsonSerializable
             ->count();
     }
 
-    #[ArrayShape(['labels' => "array", 'series' => "array"])]
+    #[ArrayShape(['labels' => 'array', 'series' => 'array'])]
     public function result(): array
     {
         $followsPerDay = $this->follows();
@@ -83,12 +82,12 @@ class FollowerTrend implements JsonSerializable
         return [
             'labels' => Arr::pluck($days, 'day'),
             'series' => [
-                Arr::pluck($days, 'count')
+                Arr::pluck($days, 'count'),
             ],
         ];
     }
 
-    #[ArrayShape(['labels' => "array", 'series' => "array"])]
+    #[ArrayShape(['labels' => 'array', 'series' => 'array'])]
     public function jsonSerialize()
     {
         return $this->result();

@@ -10,6 +10,7 @@ use Redbeed\OpenOverlay\Models\User\Connection;
 class EventHistory implements JsonSerializable
 {
     private Connection $connection;
+
     private array $ignoreEvents;
 
     public function __construct(Connection $connection, ?array $ignoreEvents = ['channel.channel_points_custom_reward_redemption.add'])
@@ -28,9 +29,10 @@ class EventHistory implements JsonSerializable
             ->get()
             ->map(function (EventSubEvents $event) {
                 $eventData = Arr::dot($event->event_data);
+
                 return [
                     'id'          => $event->event_id,
-                    'description' => __('event_history.event_type.' . $event->event_type, (array)$eventData),
+                    'description' => __('event_history.event_type.'.$event->event_type, (array) $eventData),
                     'data'        => $eventData,
                     'sent'        => $event->event_sent->diffForHumans(),
                 ];

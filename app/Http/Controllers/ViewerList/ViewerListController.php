@@ -10,7 +10,6 @@ use JetBrains\PhpStorm\ArrayShape;
 
 abstract class ViewerListController
 {
-
     protected string $listTemplate;
 
     public function __invoke(Request $request)
@@ -19,13 +18,13 @@ abstract class ViewerListController
 
         return Inertia::render($this->listTemplate, [
             'connections' => $connectionsData,
-            'users' => $this->listUsers($request),
+            'users'       => $this->listUsers($request),
         ]);
     }
 
     abstract public function listUsers(Request $request);
 
-    #[ArrayShape(['list' => "\Illuminate\Support\Collection", 'selected' => "mixed|null"])]
+    #[ArrayShape(['list' => "\Illuminate\Support\Collection", 'selected' => 'mixed|null'])]
     protected function getConnections(Request $request): array
     {
         /** @var User $user */
@@ -35,13 +34,13 @@ abstract class ViewerListController
 
         $connectionId = $request->get('connection') ?? $connections->keys()->first();
 
-        if ($connections->count() > 0 && !$connections->get($connectionId)) {
+        if ($connections->count() > 0 && ! $connections->get($connectionId)) {
             $connectionId = null;
         }
 
         return [
-            'list' => $connections,
-            'selected' => $connectionId
+            'list'     => $connections,
+            'selected' => $connectionId,
         ];
     }
 }

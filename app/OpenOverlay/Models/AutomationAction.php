@@ -11,12 +11,12 @@ class AutomationAction extends Model
     use HasFactory;
 
     protected $fillable = [
-        'form_class', 'settings', 'name', 'active'
+        'form_class', 'settings', 'name', 'active',
     ];
 
     protected $casts = [
         'active'   => 'boolean',
-        'settings' => 'json'
+        'settings' => 'json',
     ];
 
     public function automation(): BelongsTo

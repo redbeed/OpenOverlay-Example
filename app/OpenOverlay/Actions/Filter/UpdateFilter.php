@@ -4,7 +4,6 @@ namespace App\OpenOverlay\Actions\Filter;
 
 use App\OpenOverlay\Actions\Action;
 use App\OpenOverlay\Automations\Settings\SettingsHandler;
-use App\OpenOverlay\Models\Automation;
 use App\OpenOverlay\Models\AutomationFilter;
 use Illuminate\Support\Facades\Validator;
 

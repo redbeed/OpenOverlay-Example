@@ -21,8 +21,8 @@ class BotController extends Controller
         $availableBots = BotConnection::all();
 
         return Inertia::render('Bot/List', [
-            'availableBots' => $availableBots,
-            'userConnectedBots' => $userConnectedBots
+            'availableBots'     => $availableBots,
+            'userConnectedBots' => $userConnectedBots,
         ]);
     }
 
@@ -30,7 +30,7 @@ class BotController extends Controller
     {
         $bot = BotConnection::find($botId);
 
-        if (!$bot) {
+        if (! $bot) {
             abort(404, 'Bot not found');
         }
 
@@ -63,7 +63,7 @@ class BotController extends Controller
         $user = Auth::user();
         $bot = $this->checkBot($botId);
 
-        if (!$user->bots->contains($bot)) {
+        if (! $user->bots->contains($bot)) {
             return redirect()->route('bots')
                 ->with('message', 'Bot is not in your chat');
         }

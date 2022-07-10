@@ -9,7 +9,7 @@ class Actions
     public static function cardList(): Collection
     {
         return collect(config('openoverlay.ui.automations.actions', []))
-            ->mapWithKeys(function($actionFormClass){
+            ->mapWithKeys(function ($actionFormClass) {
                 return [
                     $actionFormClass => [
                         'name'        => $actionFormClass::referenceName(),

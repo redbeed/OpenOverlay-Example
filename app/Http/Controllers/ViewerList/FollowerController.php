@@ -29,7 +29,7 @@ class FollowerController extends ViewerListController
             ->orderBy($sort, $sortDirection);
 
         if ($query) {
-            $followersQuery = $followersQuery->where('follower_username', 'LIKE', '%' . $query . '%');
+            $followersQuery = $followersQuery->where('follower_username', 'LIKE', '%'.$query.'%');
         }
 
         return $followersQuery->paginate($perPage);

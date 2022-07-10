@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\Automations\Action\CreateActionController as AutomationsCreateActionController;
+use App\Http\Controllers\Automations\Action\EditActionController as AutomationsEditActionController;
 use App\Http\Controllers\Automations\CreateController as AutomationsCreateController;
 use App\Http\Controllers\Automations\EditController as AutomationsEditController;
 use App\Http\Controllers\Automations\Filter\CreateFilterController as AutomationsCreateFilterController;
 use App\Http\Controllers\Automations\Filter\EditFilterController as AutomationsEditFilterController;
-use App\Http\Controllers\Automations\Action\CreateActionController as AutomationsCreateActionController;
-use App\Http\Controllers\Automations\Action\EditActionController as AutomationsEditActionController;
 use App\Http\Controllers\Automations\ListController as AutomationsListController;
 use App\Http\Controllers\BotController;
 use App\Http\Controllers\DashboardController;
@@ -25,15 +25,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn() => redirect()->route('dashboard'));
+Route::get('/', fn () => redirect()->route('dashboard'));
 
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/dashboard', DashboardController::class)
     ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-
-
     Route::prefix('automations')->group(function () {
         Route::get('/')
             ->uses(AutomationsListController::class)
@@ -50,7 +48,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/{automation}')
             ->uses([AutomationsEditController::class, 'update'])
             ->name('automations.update');
-
 
         Route::prefix('/{automation}/filter')->group(function () {
             Route::post('/create')
@@ -114,7 +111,6 @@ Route::middleware('auth')->group(function () {
             ->uses([SubscriberController::class, 'listAction'])
             ->name('subscribers.list');
     });
-
 });
 
 Route::get('overlay/{twitchUserId}')->uses(OverlayExampleController::class)

@@ -18,14 +18,14 @@ return [
                 'user:read:email', 'user:read:broadcast',
                 'channel:read:subscriptions', 'channel:read:subscriptions', 'channel:read:redemptions',
                 'bits:read',
-                'chat:edit', 'chat:read'
+                'chat:edit', 'chat:read',
             ],
 
             /**
              * OpenOverlay automatically transfer twitch users data into the database
              * Here you can enable and disable different data endpoints
              */
-            'save'   => [
+            'save' => [
                 'follower'   => true,
                 'subscriber' => true,
             ],
@@ -38,12 +38,12 @@ return [
          * You can use :username, :twitchUrl and :gameName for your message.
          */
         \Redbeed\OpenOverlay\Listeners\AutoShoutOutRaid::class => [
-            'message' => 'Follow :username over at :twitchUrl. They were last playing :gameName'
+            'message' => 'Follow :username over at :twitchUrl. They were last playing :gameName',
         ],
 
         \Redbeed\OpenOverlay\Support\ViewerInChat::class => [
-            'reset' => -1
-        ]
+            'reset' => -1,
+        ],
     ],
 
     'webhook' => [
@@ -62,7 +62,7 @@ return [
              * Your personal and unique secret is used to validate a twitch callback
              * If you change your secret all previous configures webhook callbacks will be end as invalid
              */
-            'secret'    => env('OVERLAY_SECRET'),
+            'secret' => env('OVERLAY_SECRET'),
 
             /**
              * You can subscribe different endpoints/changes on twitch side.
@@ -82,7 +82,7 @@ return [
         'automations' => [
             'triggers' => [
                 ScheduleTrigger::class,
-                TwitchChatMessageTrigger::class
+                TwitchChatMessageTrigger::class,
             ],
 
             'filters' => [
@@ -90,8 +90,8 @@ return [
             ],
 
             'actions' => [
-                TwitchChatBotMessageForm::class
-            ]
-        ]
-    ]
+                TwitchChatBotMessageForm::class,
+            ],
+        ],
+    ],
 ];
