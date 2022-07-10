@@ -10,11 +10,15 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+ray.php
 
 docker/mysql/
 !docker/mysql/data/.keep
 
 composer.lock
+
+docker-compose.dev.yml
+composer.dev.json
 
 # Created by https://www.toptal.com/developers/gitignore/api/laravel,phpstorm+all
 # Edit at https://www.toptal.com/developers/gitignore?templates=laravel,phpstorm+all

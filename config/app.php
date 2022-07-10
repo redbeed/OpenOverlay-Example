@@ -178,6 +178,7 @@ return [
         App\Providers\JetstreamServiceProvider::class,
 
         \App\Providers\AutomationsServiceProvider::class,
+        \App\Providers\DatabaseAutomationsServiceProvider::class,
 
         \App\Providers\ForceHttpsServiceProvider::class,
 

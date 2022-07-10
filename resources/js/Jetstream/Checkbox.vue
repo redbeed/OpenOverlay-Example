@@ -15,14 +15,14 @@ export default defineComponent({
             default: false,
         },
         value: {
-            default: null,
+            default: true,
         },
     },
 
     computed: {
         proxyChecked: {
             get() {
-                return this.checked;
+                return this.checked || false;
             },
 
             set(val) {

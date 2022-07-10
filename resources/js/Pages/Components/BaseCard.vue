@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white shadow-xl rounded-lg relative" :class="[this.padding]">
+    <div class="shadow-xl rounded-lg relative" :class="[this.padding, this.backgroundColor]">
         <slot></slot>
     </div>
 </template>
@@ -12,6 +12,11 @@ export default {
         padding: {
             type: String,
             default: 'px-6 py-4'
+        },
+
+        backgroundColor: {
+            type: String,
+            default: 'bg-white'
         }
     },
 

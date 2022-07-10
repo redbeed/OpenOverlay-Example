@@ -1,5 +1,9 @@
 <?php
 
+use App\OpenOverlay\Automations\Settings\Actions\TwitchChatBotMessageForm;
+use Redbeed\OpenOverlay\Automations\Triggers\ScheduleTrigger;
+use Redbeed\OpenOverlay\Automations\Triggers\TwitchChatMessageTrigger;
+
 return [
     'route_prefix' => null,
 
@@ -74,22 +78,20 @@ return [
         ],
     ],
 
-    'bot' => [
-        'commands' => [
-
-            'simple' => [
-                '!hello' => 'Hello %username%! How are you doing?',
+    'ui' => [
+        'automations' => [
+            'triggers' => [
+                ScheduleTrigger::class,
+                TwitchChatMessageTrigger::class
             ],
 
-            'advanced' => [
-                \Redbeed\OpenOverlay\ChatBot\Commands\ShoutOutBotCommand::class,
+            'filters' => [
+                \App\OpenOverlay\Automations\Settings\Filters\ChatMessageContainsFilterForm::class,
+            ],
 
-                \App\Bot\Commands\DatabaseCommands::class,
+            'actions' => [
+                TwitchChatBotMessageForm::class
             ]
-        ],
-
-        'schedules' => [
-            \Redbeed\OpenOverlay\Console\Scheduling\MadeWithChatBotScheduling::class,
         ]
     ]
 ];
